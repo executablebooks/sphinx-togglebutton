@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>sphinx-togglebutton &#8212; Sphinx Collapse Admonitions  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/togglebutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sphinx-togglebutton">
+<h1>sphinx-togglebutton<a class="headerlink" href="#sphinx-togglebutton" title="Permalink to this headline">¶</a></h1>
+<p>A small sphinx extension to make it possible to add a “toggle button” to
+sections of your page.</p>
+<p>For example, click the “-” button to the right:</p>
+<div class="toggle admonition note">
+<p class="admonition-title">Note</p>
+<p>Here’s a toggled admonition</p>
+</div>
+<p>It was created with this code:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">note</span><span class="p">::</span> Here&#39;s a toggled admonition
+    <span class="nc">:class:</span> <span class="nf">toggle</span>
+
+    (admonition body here)
+</pre></div>
+</div>
+<p>And here’s a code block:</p>
+<div class="toggle docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;wow, very python&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;this code should be toggle-able!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>You can install <cite>sphinx-togglebutton</cite> with <cite>pip</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install sphinx-togglebutton
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>In your <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> configuration file, add <code class="docutils literal notranslate"><span class="pre">sphinx_togglebutton</span></code>
+to your extensions list.</p>
+<p>E.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;sphinx_togglebutton&#39;</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Now, whenever you wish for an admonition to be toggle-able, add the
+<code class="docutils literal notranslate"><span class="pre">:class:</span> <span class="pre">toggle</span></code> parameter to the admonition directive that you use.</p>
+<p>For example, this code would create a toggle-able “note” admonition:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">note</span><span class="p">::</span>
+    <span class="nc">:class:</span> <span class="nf">toggle</span>
+
+    This is my note.
+</pre></div>
+</div>
+<p>Here’s how it looks:</p>
+<div class="toggle admonition note">
+<p class="admonition-title">Note</p>
+<p>This is my note.</p>
+</div>
+<p>Clicking on the toggle button will toggle the item’s visibility.</p>
+<p>You may also <strong>hide the content by default</strong>. To do so, add the <code class="docutils literal notranslate"><span class="pre">toggle</span></code>
+class <em>as well as</em> a <code class="docutils literal notranslate"><span class="pre">toggle-hidden</span></code> class, like so:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">note</span><span class="p">::</span>
+    <span class="nc">:class:</span> <span class="nf">toggle, toggle-hidden</span>
+
+    This is my note.
+</pre></div>
+</div>
+<p>This will generate the following block:</p>
+<div class="toggle toggle-hidden admonition note">
+<p class="admonition-title">Note</p>
+<p>This is my note.</p>
+</div>
+<p>You can also use <strong>containers</strong> to add arbitrary toggle-able code. For example,
+here’s a container with an image inside:</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="admonition-look-at-that-an-image admonition">
+<p class="admonition-title">Look at that, an image!</p>
+<img alt="https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif" src="https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif" />
+</div>
+</div>
+<p>Here’s how they look right after one another:</p>
+<div class="toggle admonition note">
+<p class="admonition-title">Note</p>
+<p>This is my note.</p>
+</div>
+<div class="toggle admonition note">
+<p class="admonition-title">Note</p>
+<p>This is my second.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Sphinx Collapse Admonitions</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Chris Holdgraf.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

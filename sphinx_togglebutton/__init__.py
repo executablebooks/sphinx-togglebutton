@@ -1,7 +1,7 @@
 """A small sphinx extension to add "toggle" buttons to items."""
 import os
 
-__version__ = "0.0.1"
+__version__ = "0.0.2dev0"
 
 
 def st_static_path(app):

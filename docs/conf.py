@@ -42,6 +42,7 @@ extensions = [
     "sphinx_togglebutton"
 ]
 
+togglebutton_selector = ".toggle, .secondtoggle"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

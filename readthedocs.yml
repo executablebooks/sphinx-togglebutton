@@ -1,5 +1,4 @@
-name: sphinx-togglebutton
-type: sphinx
+version: 2
 python:
   version: 3
   install:

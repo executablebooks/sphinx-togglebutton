@@ -1,28 +1,27 @@
 var initToggleItems = () => {
-  var itemsToToggle = document.querySelectorAll(".toggle");
+  var itemsToToggle = document.querySelectorAll(togglebuttonSelector);
 
   // Add the button to each admonition and hook up a callback to toggle visibility
   itemsToToggle.forEach((item, index) => {
     var toggleID = `toggle-${index}`;
+    var buttonID = `button-${toggleID}`;
     item.setAttribute('id', toggleID);
     var collapseButton = `
-      <button id="button-${toggleID}" class="toggle-button" data-target="${toggleID}" data-button="button-${toggleID}">
-          <div class="bar horizontal" data-button="button-${toggleID}"></div>
-          <div class="bar vertical" data-button="button-${toggleID}"></div>
+      <button id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
+          <div class="bar horizontal" data-button="${buttonID}"></div>
+          <div class="bar vertical" data-button="${buttonID}"></div>
       </button>`;
     item.insertAdjacentHTML('beforebegin', collapseButton);
-    thisButton = $(`#button-${toggleID}`);
-    thisButton.on('click', toggleHidden);
-    if (item.classList.contains("toggle-hidden")) {
-      console.log('hi')
-      thisButton.addClass("toggle-button-hidden")
+    thisButton = $(`#${buttonID}`);
+    thisButton.on('click', toggleClickHandler);
+    if (!item.classList.contains("toggle-shown")) {
+      toggleHidden(thisButton[0]);
     }
   })
 };
 
 // This should simply add / remove the collapsed class and change the button text
-var toggleHidden = (click) => {
-  button = document.getElementById(click.target.dataset['button']);
+var toggleHidden = (button) => {
   target = button.dataset['target']
   var itemToToggle = document.getElementById(target);
   if (itemToToggle.classList.contains("toggle-hidden")) {
@@ -34,12 +33,19 @@ var toggleHidden = (click) => {
   }
 }
 
+var toggleClickHandler = (click) => {
+  button = document.getElementById(click.target.dataset['button']);
+  toggleHidden(button);
+}
+
 // If we want to blanket-add toggle classes to certain cells
 var addToggleToSelector = () => {
   const selector = "";
-  document.querySelectorAll(selector).forEach((item) => {
-    item.classList.add("toggle");
-  })
+  if (selector.length > 0) {
+    document.querySelectorAll(selector).forEach((item) => {
+      item.classList.add("toggle");
+    })
+  }
 }
 
 // Helper function to run when the DOM is finished

@@ -34,12 +34,10 @@ button.toggle-button.toggle-button-hidden:before {
 .toggle-button .bar {
     background-color: white;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 18px;
+    left: 15%;
+    top: 43%;
+    width: 16px;
     height: 3px;
-    margin-left: -9px;
-    margin-top: -1px;
 }
 
 .toggle-button .vertical {

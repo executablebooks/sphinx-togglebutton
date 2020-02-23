@@ -5,7 +5,7 @@ sphinx-togglebutton
 A small sphinx extension to make it possible to add a "toggle button" to
 sections of your page.
 
-For example, click the "-" button to the right:
+For example, click the "+" button to the right:
 
 .. note:: Here's a toggled admonition
     :class: toggle
@@ -80,8 +80,9 @@ Clicking on the toggle button will toggle the item's visibility.
 Show content by default
 -----------------------
 
-You may also **show the content by default**. To do so, add the ``toggle``
-class *as well as* a ``toggle-shown`` class, like so:
+By default, all items with toggle buttons added to them will be hidden by
+default. You may also **show the content by default**. To do so, add the
+``toggle`` class *as well as* a ``toggle-shown`` class, like so:
 
 .. code:: rst
 

@@ -1,5 +1,9 @@
 name: sphinx-togglebutton
 type: sphinx
-requirements_file: doc/requirements.txt
 python:
   version: 3
+  install:
+      - method: pip
+        path: .
+        extra_requirements:
+          - sphinx

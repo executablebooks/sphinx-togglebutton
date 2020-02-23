@@ -22,6 +22,9 @@ setup(
         '_static/togglebutton.js'
         ]
     },
-    install_requires=["flit", "setuptools", "wheel", "sphinx"],
+    install_requires=["setuptools", "wheel", "sphinx"],
+    extras_require={
+        "sphinx": ["sphinx"]
+    }
     classifiers=["License :: OSI Approved :: MIT License"]
 )

@@ -24,7 +24,7 @@ setup(
     license="MIT License",
     packages=find_packages(),
     package_data={
-        "sphinx_togglebutton": ["_static/togglebutton.css", "_static/togglebutton.js"]
+        "sphinx_togglebutton": ["_static/togglebutton.css_t", "_static/togglebutton.js"]
     },
     install_requires=["setuptools", "wheel", "sphinx", "docutils"],
     extras_require={"sphinx": ["myst_nb"]},

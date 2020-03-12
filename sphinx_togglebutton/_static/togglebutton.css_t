@@ -52,7 +52,7 @@ button.toggle-button {
 }
 
 button.toggle-button.toggle-button-hidden:before {
-    content: "Click to show";
+    content: "{{ togglebutton_hint }}";
     position: absolute;
     left: -6.5em;
     bottom: .4em;

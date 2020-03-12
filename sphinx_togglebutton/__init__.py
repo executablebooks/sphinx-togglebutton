@@ -11,6 +11,11 @@ def st_static_path(app):
     app.config.html_static_path.append(static_path)
 
 
+def add_to_context(app, config):
+    # Update the global context
+    config.html_context.update({'togglebutton_hint': config.togglebutton_hint})
+
+
 # This function reads in a variable and inserts it into JavaScript
 def insert_custom_selection_config(app):
     # This is a configuration that you've specified for users in `conf.py`
@@ -58,10 +63,12 @@ def setup(app):
     # Add the string we'll use to select items in the JS
     # Tell Sphinx about this configuration variable
     app.add_config_value("togglebutton_selector", ".toggle", "html")
+    app.add_config_value("togglebutton_hint", "Click to show", "html")
     app.add_js_file("togglebutton.js")
 
     # Run the function after the builder is initialized
     app.connect("builder-inited", insert_custom_selection_config)
+    app.connect("config-inited", add_to_context)
     app.add_directive("toggle", Toggle)
     return {
         "version": __version__,

@@ -162,3 +162,15 @@ Here's how they look right after one another:
     :class: toggle
 
     This is my second.
+
+
+Configuration
+=============
+
+You can control the "hint" text that is displayed next to togglebuttons when
+their content is collapsed. To do so, use the following configuration variable
+in your ``conf.py`` file:
+
+.. code-block:: python
+
+    togglebutton_hint = "My text"

@@ -1,11 +1,32 @@
 /* Visibility of the target */
-div.toggle-hidden {
+.toggle {
+    transition: opacity .5s;
+}
+
+.toggle-hidden {
     visibility: hidden;
     opacity: 0;
     height: 1.5em;
     margin: 0px !important;
     padding: 0px !important;
 }
+
+.toggle-body .admonition-title:after {
+    content: "";
+}
+
+.toggle-body button.toggle-button {
+    margin-right: 0.5em;
+    right: 0em;
+}
+
+/* These should be totally hidden since they're inside an admonition */
+
+.toggle-body .toggle-hidden * {
+    margin: 0em;
+    padding: 0em;
+}
+
 
 /* General button style */
 button.toggle-button {

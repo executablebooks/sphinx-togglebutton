@@ -21,6 +21,6 @@ setup(
         "sphinx_togglebutton": ["_static/togglebutton.css", "_static/togglebutton.js"]
     },
     install_requires=["setuptools", "wheel", "sphinx"],
-    extras_require={"sphinx": ["sphinx"]},
+    extras_require={"sphinx": ["sphinx", "myst_nb"]},
     classifiers=["License :: OSI Approved :: MIT License"],
 )

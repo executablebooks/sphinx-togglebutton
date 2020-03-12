@@ -11,6 +11,11 @@
     padding: 0px !important;
 }
 
+/* Toggle buttons inside admonitions so we see the title */
+.toggle-body {
+    position: relative;
+}
+
 .toggle-body .admonition-title:after {
     content: "";
 }
@@ -18,6 +23,8 @@
 .toggle-body button.toggle-button {
     margin-right: 0.5em;
     right: 0em;
+    position: absolute;
+    top: .3em;
 }
 
 /* These should be totally hidden since they're inside an admonition */
@@ -47,8 +54,8 @@ button.toggle-button {
 button.toggle-button.toggle-button-hidden:before {
     content: "Click to show";
     position: absolute;
-    left: -7em;
-    bottom: .5em;
+    left: -6.5em;
+    bottom: .4em;
 }
 
 /* Plus / minus toggles */

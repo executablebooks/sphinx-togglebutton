@@ -1,6 +1,5 @@
 """A small sphinx extension to add "toggle" buttons to items."""
 import os
-import sphinx
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
 

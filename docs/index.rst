@@ -167,6 +167,41 @@ Here's how they look right after one another:
 Configuration
 =============
 
+Below are a few configuration points for ``sphinx-togglebutton``.
+
+
+Control the selector text used to make elements toggle-able
+-----------------------------------------------------------
+
+By default, ``sphinx-togglebutton`` selects any items that have the class ``.toggle``
+and adds a toggle-button to them. If you'd like to change this class, for example to
+select a different kind of HTML element, you may configure this field manually like so
+in your ``conf.py`` file:
+
+.. code-block:: python
+
+    togglebutton_selector = "your-selector"
+
+For example, if you wanted to add toggle-buttons to all HTML elements that had a
+``toggle-this-item`` class, in *addition* to the default class of ``toggle``,
+you could do so with the following configuration:
+
+.. code-block:: python
+
+    togglebutton_selector = ".toggle, .toggle-this-item"
+
+
+This is what has been done for the toggle-able section below:
+
+.. note::
+    :class: toggle-this-item
+
+    A toggled note with a custom class to trigger toggling.
+
+
+Control the togglebutton hover text
+-----------------------------------
+
 You can control the "hint" text that is displayed next to togglebuttons when
 their content is collapsed. To do so, use the following configuration variable
 in your ``conf.py`` file:

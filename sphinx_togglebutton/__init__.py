@@ -13,7 +13,7 @@ def st_static_path(app):
 
 def add_to_context(app, config):
     # Update the global context
-    config.html_context.update({'togglebutton_hint': config.togglebutton_hint})
+    config.html_context.update({"togglebutton_hint": config.togglebutton_hint})
 
 
 # This function reads in a variable and inserts it into JavaScript
@@ -58,7 +58,7 @@ def setup(app):
     app.connect("builder-inited", st_static_path)
 
     # Add relevant code to headers
-    app.add_stylesheet("togglebutton.css")
+    app.add_css_file("togglebutton.css")
 
     # Add the string we'll use to select items in the JS
     # Tell Sphinx about this configuration variable

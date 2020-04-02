@@ -18,7 +18,8 @@ and check off the boxes as you complete items:
   - The tag should be the current sphinx-togglebutton version number.
   - Add a description of what has changed since it was last-used. You can use [the `github-activity` tool](https://github.com/choldgraf/github-activity)
     to make this easier if you wish.
-- [ ] Creating a new release should [trigger GitHub action to push the release to PyPI](https://github.com/ExecutableBookProject/sphinx-togglebutton/actions)
+- [ ] Creating a new release should [trigger GitHub action to push the release to PyPI](https://github.com/ExecutableBookProject/sphinx-togglebutton/actions).
+      The [action configuration is here](https://github.com/ExecutableBookProject/sphinx-togglebutton/blob/master/.github/workflows/tests.yml).
 - [ ] Confirm that the new version of Sphinx-Togglebutton [is posted to pypi](https://pypi.org/project/sphinx-togglebutton/)
 - [ ] Bump the [Sphinx-Togglebutton version number](https://github.com/ExecutableBookProject/sphinx-togglebutton/blob/master/sphinx_togglebutton/__init__.py) to
    the next minor (or major) release and append `dev0` to the end.

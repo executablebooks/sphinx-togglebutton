@@ -7,7 +7,7 @@ version = [
     for line in Path("sphinx_togglebutton/__init__.py").read_text().split("\n")
     if "__version__" in line
 ]
-version = version[0].split(" = ")[-1]
+version = version[0].split(" = ")[-1].strip('"')
 
 with open("./README.rst", "r") as ff:
     readme_text = ff.read()

@@ -17,7 +17,7 @@ setup(
     version=version,
     description="Add a toggle button to items on a page.",
     long_description=readme_text,
-    long_description_content_type="text/x-rst",
+    long_description_content_type="text/markdown",
     author="Chris Holdgraf",
     author_email="choldgraf@berkeley.edu",
     url="https://github.com/choldgraf/sphinx-togglebutton",

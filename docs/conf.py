@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "Sphinx Collapse Admonitions"
+project = "Sphinx Toggle Button"
 copyright = "2018, Chris Holdgraf"
 author = "Chris Holdgraf"
 

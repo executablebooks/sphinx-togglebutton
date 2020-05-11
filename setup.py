@@ -9,7 +9,7 @@ version = [
 ]
 version = version[0].split(" = ")[-1].strip('"')
 
-with open("./README.rst", "r") as ff:
+with open("./README.md", "r") as ff:
     readme_text = ff.read()
 
 setup(
@@ -20,13 +20,13 @@ setup(
     long_description_content_type="text/markdown",
     author="Chris Holdgraf",
     author_email="choldgraf@berkeley.edu",
-    url="https://github.com/choldgraf/sphinx-togglebutton",
+    url="https://github.com/executablebooks/sphinx-togglebutton",
     license="MIT License",
     packages=find_packages(),
     package_data={
         "sphinx_togglebutton": ["_static/togglebutton.css_t", "_static/togglebutton.js"]
     },
     install_requires=["setuptools", "wheel", "sphinx", "docutils"],
-    extras_require={"sphinx": ["myst_nb"]},
+    extras_require={"sphinx": ["myst_nb", "sphinx_book_theme"]},
     classifiers=["License :: OSI Approved :: MIT License"],
 )

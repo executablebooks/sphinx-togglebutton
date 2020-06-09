@@ -5,32 +5,32 @@ sphinx-togglebutton
 A small sphinx extension to make it possible to add a "toggle button" to
 sections of your page.
 
-For example, click the "+" button to the right:
+.. admonition:: For example, click the "+" button to the right:
+   :class: dropdown
+
+   Here's a toggled note! You can put all kinds of stuff in here!
+
+You can also add a toggle button to arbitrary chunks of content.
+For example, click the toggle button to the right just below.
 
 .. toggle::
 
-    .. note:: Here's a toggled admonition
+    .. admonition:: Wow!
+       :class: tip
 
-It was created with this code:
+       It's a code block!
 
-.. code-block:: rst
+       .. code-block:: python
 
-    .. toggle::
+           a = "wow, very python"
 
-        .. note:: Here's a toggled admonition
+See :ref:`usage` for more information.
 
-You can also add a title to your toggled block. The title will show up,
-and the toggle button will change the block's content. For example:
+.. caution::
 
-.. toggle:: Toggle to see what's inside
-
-    It's a code block!
-
-    .. code-block:: python
-
-        a = "wow, very python"
-        print("this code should be toggle-able!")
-
+   ``sphinx-togglebutton`` is designed for the
+   `sphinx-book-theme <https://sphinx-book-theme.readthedocs.io/>`_. It should work
+   properly on other themes, but if you notice any CSS bugs, please open an issue!
 
 Installation
 ============
@@ -41,12 +41,8 @@ You can install `sphinx-togglebutton` with `pip`:
 
     pip install sphinx-togglebutton
 
-
-Usage
-=====
-
-In your ``conf.py`` configuration file, add ``sphinx_togglebutton``
-to your extensions list.
+Then, activate it in your ``sphinx`` build by adding it to your ``conf.py`` configuration
+file, like so:
 
 E.g.:
 
@@ -58,9 +54,82 @@ E.g.:
         ...
     ]
 
+See :ref:`usage` for information about how to use ``sphinx-togglebutton``.
 
-The toggle directive
---------------------
+.. _usage:
+
+Usage
+=====
+
+There are two main ways to use ``sphinx-togglebutton``:
+
+* Create dropdown admonitions with the ``dropdown`` class
+* Make arbitrary chunks of content "toggle-able" with the ``toggle::`` directive
+
+.. _dropdown-admonitions:
+
+Dropdown admonitions by adding classes
+--------------------------------------
+
+Making dropdown admonitions allows you to insert extra information in your document
+without forcing the user to see that content. For example:
+
+.. admonition:: What could be inside this warning?
+   :class: warning, dropdown
+
+   A whale of a joke!
+
+   .. image:: https://media.giphy.com/media/FaKV1cVKlVRxC/giphy.gif
+
+   (sorry)
+
+Create a dropdown admonition by adding the ``dropdown`` class to an admonition directive.
+For example, like so:
+
+.. code-block:: rst
+
+   .. note::
+      :class: dropdown
+
+      My note
+
+Note that you can use a custom admonition title and apply the style of a "built-in"
+admonition (e.g., ``note``, ``warning``, etc) with the ``admonition::`` directive:
+
+.. code-block:: rst
+
+   .. admonition:: Here's my title
+      :class: dropdown, warning
+
+      My note
+
+Creates:
+
+.. admonition:: Here's my title
+    :class: dropdown, warning
+
+    My custom admonition!
+
+To show the content by default, add a ``toggle-shown`` class as well.
+
+.. code-block:: rst
+
+    .. note::
+        :class: dropdown, toggle-shown
+
+        This is my note.
+
+This will generate the following block:
+
+.. note::
+    :class: dropdown, toggle-shown
+
+    This is my note.
+
+.. _toggle-directive:
+
+Toggle any content with the toggle directive
+--------------------------------------------
 
 To add toggle-able content, use the **toggle directive**. This directive
 will wrap its content in a toggle-able container. You can call it like so:
@@ -74,21 +143,6 @@ will wrap its content in a toggle-able container. You can call it like so:
 The code above results in:
 
 .. toggle::
-
-    Here is my toggle-able content!
-
-You can also add titles to your toggle-able content:
-
-.. code-block:: rst
-
-    .. toggle:: My title
-
-        Here is my toggle-able content!
-
-Which results in:
-
-
-.. toggle:: My title
 
     Here is my toggle-able content!
 
@@ -109,47 +163,27 @@ It results in the following:
     Here is my toggle-able content!
 
 
-Toggling content by adding classes
-----------------------------------
+Configuration
+=============
 
-You can also make elements toggle-able by adding the ``toggle`` class to
-them. This can be done with admonitions and containers with the
-``:class: my, classes`` keyword.
-
-For example, this code would create a toggle-able "note" admonition:
-
-.. code-block:: rst
-
-    .. note::
-        :class: toggle
-
-        This is my note.
-
-Here's how it looks:
-
-.. note::
-    :class: toggle
-
-    This is my note.
-
-Clicking on the toggle button will toggle the item's visibility.
+Below are a few configuration points for ``sphinx-togglebutton``.
 
 
-To show the content by default, add a ``toggle-shown`` class as well.
+Control the togglebutton hover text
+-----------------------------------
 
-.. code-block:: rst
+You can control the "hint" text that is displayed next to togglebuttons when
+their content is collapsed. To do so, use the following configuration variable
+in your ``conf.py`` file:
 
-    .. note::
-        :class: toggle, toggle-shown
+.. code-block:: python
 
-        This is my note.
+    togglebutton_hint = "My text"
 
-This will generate the following block:
+Reference
+=========
 
-.. note::
-    :class: toggle, toggle-shown
-
-    This is my note.
+This is a simple reference section to double-check styling etc.
 
 Here's how they look right after one another:
 
@@ -163,49 +197,10 @@ Here's how they look right after one another:
 
     This is my second.
 
+.. toggle::
 
-Configuration
-=============
+    This is my first.
 
-Below are a few configuration points for ``sphinx-togglebutton``.
+.. toggle::
 
-
-Control the selector text used to make elements toggle-able
------------------------------------------------------------
-
-By default, ``sphinx-togglebutton`` selects any items that have the class ``.toggle``
-and adds a toggle-button to them. If you'd like to change this class, for example to
-select a different kind of HTML element, you may configure this field manually like so
-in your ``conf.py`` file:
-
-.. code-block:: python
-
-    togglebutton_selector = "your-selector"
-
-For example, if you wanted to add toggle-buttons to all HTML elements that had a
-``toggle-this-item`` class, in *addition* to the default class of ``toggle``,
-you could do so with the following configuration:
-
-.. code-block:: python
-
-    togglebutton_selector = ".toggle, .toggle-this-item"
-
-
-This is what has been done for the toggle-able section below:
-
-.. note::
-    :class: toggle-this-item
-
-    A toggled note with a custom class to trigger toggling.
-
-
-Control the togglebutton hover text
------------------------------------
-
-You can control the "hint" text that is displayed next to togglebuttons when
-their content is collapsed. To do so, use the following configuration variable
-in your ``conf.py`` file:
-
-.. code-block:: python
-
-    togglebutton_hint = "My text"
+    This is my second.

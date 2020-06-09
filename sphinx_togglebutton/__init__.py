@@ -39,16 +39,8 @@ class Toggle(Directive):
         if "show" in self.options:
             classes.append("toggle-shown")
 
-        if len(self.arguments) == 0:
-            parent = nodes.container(classes=classes)
-            self.state.nested_parse(self.content, self.content_offset, parent)
-        else:
-            parent = nodes.admonition(classes=["toggle-body"])
-            title = nodes.title(self.arguments[0], self.arguments[0])
-            body = nodes.container(classes=classes)
-            self.state.nested_parse(self.content, self.content_offset, body)
-            parent += title
-            parent += body
+        parent = nodes.container(classes=classes)
+        self.state.nested_parse(self.content, self.content_offset, parent)
         return [parent]
 
 
@@ -62,7 +54,7 @@ def setup(app):
 
     # Add the string we'll use to select items in the JS
     # Tell Sphinx about this configuration variable
-    app.add_config_value("togglebutton_selector", ".toggle", "html")
+    app.add_config_value("togglebutton_selector", ".toggle, .admonition.dropdown", "html")
     app.add_config_value("togglebutton_hint", "Click to show", "html")
     app.add_js_file("togglebutton.js")
 

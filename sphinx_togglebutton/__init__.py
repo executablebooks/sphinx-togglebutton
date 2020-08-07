@@ -3,7 +3,7 @@ import os
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
 
-__version__ = "0.2.1dev0"
+__version__ = "0.2.0"
 
 
 def st_static_path(app):

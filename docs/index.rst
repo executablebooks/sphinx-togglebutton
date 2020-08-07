@@ -204,3 +204,16 @@ Here's how they look right after one another:
 .. toggle::
 
     This is my second.
+
+.. admonition:: A really long admonition that will take up multiple lines A really long admonition that will take up multiple lines
+    :class: toggle
+    
+    Admonition content.
+
+    .. image:: https://jupyterbook.org/_static/logo.png
+
+.. admonition:: A really long admonition that will take up multiple lines A really long admonition that will take up multiple lines
+    
+    Admonition content.
+
+    .. image:: https://jupyterbook.org/_static/logo.png

@@ -59,13 +59,16 @@ button.toggle-button {
     padding: 0px;
 }
 
-button.toggle-button.toggle-button-hidden:before {
-    content: "{{ togglebutton_hint }}";
-    position: absolute;
-    font-size: .8em;
-    left: -6.5em;
-    bottom: .4em;
+@media (min-width: 768px) {
+    button.toggle-button.toggle-button-hidden:before {
+        content: "{{ togglebutton_hint }}";
+        position: absolute;
+        font-size: .8em;
+        left: -6.5em;
+        bottom: .4em;
+    }
 }
+
 
 /* Plus / minus toggles */
 .toggle-button .bar {

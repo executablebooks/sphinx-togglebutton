@@ -15,7 +15,7 @@
 
 /* Titles should cut off earlier to avoid overlapping w/ button */
 div.admonition.toggle p.admonition-title {
-    padding-right: 20%;
+    padding-right: 25%;
 }
 
 /* hides all the content of a page until de-toggled */

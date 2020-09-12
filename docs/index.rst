@@ -3,7 +3,13 @@ sphinx-togglebutton
 ===================
 
 A small sphinx extension to make it possible to add a "toggle button" to
-sections of your page.
+sections of your page. This allows you to:
+
+- Collapse admonitions (notes, warnings, etc) so that their content is hidden
+  until users click a toggle button. See :ref:`dropdown-admonitions`.
+- Collapse arbitrary chunks of content on your page with a ``toggle`` directive.
+  See :ref:`toggle-directive`.
+
 
 .. admonition:: For example, click the "+" button to the right:
    :class: dropdown
@@ -26,11 +32,13 @@ For example, click the toggle button to the right just below.
 
 See :ref:`usage` for more information.
 
-.. caution::
 
-   ``sphinx-togglebutton`` is designed for the
-   `sphinx-book-theme <https://sphinx-book-theme.readthedocs.io/>`_. It should work
-   properly on other themes, but if you notice any CSS bugs, please open an issue!
+.. admonition:: Check out sphinx-panels as well!
+   :class: tip
+
+   For a bootstrap-based "dropdown" directive that uses pure CSS, check out
+   `Sphinx Panels <https://sphinx-panels.readthedocs.io/en/latest/#dropdown-usage>`_
+
 
 Installation
 ============
@@ -63,9 +71,15 @@ Usage
 
 There are two main ways to use ``sphinx-togglebutton``:
 
-* Create dropdown admonitions with the ``dropdown`` class
-* Make arbitrary chunks of content "toggle-able" with the ``toggle::`` directive
+- Collapse admonitions with the ``dropdown`` class
+- Make arbitrary chunks of content "toggle-able" with the ``toggle::`` directive
 
+.. caution::
+
+   ``sphinx-togglebutton`` is designed for the
+   `sphinx-book-theme <https://sphinx-book-theme.readthedocs.io/>`_. It should work
+   properly on other themes, but if you notice any CSS bugs, please open an issue!
+   
 .. _dropdown-admonitions:
 
 Dropdown admonitions by adding classes

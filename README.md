@@ -31,25 +31,26 @@ extensions = [
 ]
 ```
 Now, whenever you wish for an admonition to be toggle-able, add the
-`:class: toggle` parameter to the admonition directive that you use.
+`:class: dropdown` parameter to the admonition directive that you use.
 
-For example, this code would create a toggle-able "note" admonition:
+For example, this code would create a toggle-able "note" admonition
+that starts hidden:
 
 ```rst
 .. note::
-    :class: toggle
+    :class: dropdown
 
     This is my note.
 ```
 
 Clicking on the toggle button will toggle the item's visibility.
 
-You may also **hide the content by default**. To do so, add the `toggle`
-class *as well as* a `toggle-hidden` class, like so:
+You may also **show the content by default**. To do so, add the `dropdown`
+class *as well as* a `toggle-shown` class, like so:
 
 ```rst
 .. note::
-    :class: toggle, toggle-hidden
+    :class: dropdown, toggle-shown
 
     This is my note.
 ```

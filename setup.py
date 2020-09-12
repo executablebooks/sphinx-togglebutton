@@ -15,7 +15,7 @@ with open("./README.md", "r") as ff:
 setup(
     name="sphinx-togglebutton",
     version=version,
-    description="Add a toggle button to items on a page.",
+    description="Toggle page content and collapse admonitions in Sphinx.",
     long_description=readme_text,
     long_description_content_type="text/markdown",
     author="Chris Holdgraf",

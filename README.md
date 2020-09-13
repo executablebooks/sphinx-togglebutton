@@ -1,7 +1,11 @@
 # sphinx-togglebutton
 
 A small sphinx extension to make it possible to add a "toggle button" to
-sections of your page.
+sections of your page. This allows you to:
+
+- Collapse Sphinx admonitions (notes, warnings, etc) so that their content is hidden
+  until users click a toggle button.
+- Collapse arbitrary chunks of content on your page with a `collapse` directive.
 
 ![demo gif](docs/_static/demo.gif)
 

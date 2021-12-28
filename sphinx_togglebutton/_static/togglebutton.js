@@ -1,6 +1,6 @@
 var initToggleItems = () => {
   var itemsToToggle = document.querySelectorAll(togglebuttonSelector);
-  console.log(itemsToToggle, togglebuttonSelector)
+  console.log(itemsToToggle, togglebuttonSelector);
   // Add the button to each admonition and hook up a callback to toggle visibility
   itemsToToggle.forEach((item, index) => {
     var toggleID = `toggle-${index}`;
@@ -34,7 +34,7 @@ var initToggleItems = () => {
 
 // This should simply add / remove the collapsed class and change the button text
 var toggleHidden = (button) => {
-  target = button.dataset['target']
+  target = button.dataset['target'];
   var itemToToggle = document.getElementById(target);
   if (itemToToggle.classList.contains("toggle-hidden")) {
     itemToToggle.classList.remove("toggle-hidden");
@@ -65,10 +65,10 @@ const sphinxToggleRunWhenDOMLoaded = cb => {
   if (document.readyState != 'loading') {
     cb()
   } else if (document.addEventListener) {
-    document.addEventListener('DOMContentLoaded', cb)
+    document.addEventListener('DOMContentLoaded', cb);
   } else {
     document.attachEvent('onreadystatechange', function() {
-      if (document.readyState == 'complete') cb()
+      if (document.readyState == 'complete') cb();
     })
   }
 }

@@ -32,6 +32,11 @@ div.admonition.toggle-hidden .admonition-title ~ * {
     position: relative;
 }
 
+/* Clicking the title will toggle the admonition, so a pointer makes this clearer */
+.toggle.admonition .admonition-title {
+    cursor: pointer;
+}
+
 .toggle.admonition.admonition-title:after {
     content: "" !important;
 }

@@ -26,8 +26,7 @@ var initToggleItems = () => {
 
     thisButton = document.getElementById(buttonID);
     thisButton.on('click', toggleClickHandler);
-    // If the toggleable has a single direct child admonition title,
-    // make that clickable also.
+    // If admonition has a single direct-child title make it clickable.
     admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
     if (admonitionTitle) {
       admonitionTitle.on('click', toggleClickHandler);

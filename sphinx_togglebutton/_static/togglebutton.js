@@ -1,40 +1,47 @@
 var initToggleItems = () => {
   var itemsToToggle = document.querySelectorAll(togglebuttonSelector);
-  console.log(itemsToToggle, togglebuttonSelector)
+  console.log(`[togglebutton]: Adding toggle buttons to ${itemsToToggle.length} items`)
   // Add the button to each admonition and hook up a callback to toggle visibility
   itemsToToggle.forEach((item, index) => {
+    // Generate unique IDs for this item
     var toggleID = `toggle-${index}`;
     var buttonID = `button-${toggleID}`;
+
+    item.setAttribute('id', toggleID);
+    if (!item.classList.contains("toggle")){
+      item.classList.add("toggle");
+    }
+
+    // This is the button that will be added to each item to trigger the toggle
     var collapseButton = `
       <button id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
           <div class="bar horizontal" data-button="${buttonID}"></div>
           <div class="bar vertical" data-button="${buttonID}"></div>
       </button>`;
 
-    item.setAttribute('id', toggleID);
-
-    if (!item.classList.contains("toggle")){
-      item.classList.add("toggle");
-    }
-
-    // If it's an admonition block, then we'll add the button inside
+    // Add the button HTML to this element and assign it as a variable to use later
     if (item.classList.contains("admonition")) {
+      // If it's an admonition block, then we'll add the button inside
       item.insertAdjacentHTML("afterbegin", collapseButton);
     } else {
       item.insertAdjacentHTML('beforebegin', collapseButton);
     }
-
     thisButton = document.getElementById(buttonID);
-    thisButton.on('click', toggleClickHandler);
+    
+    // Add click handlers for the button + admonition title (if admonition)
+    thisButton.addEventListener('click', toggleClickHandler);
+
     // If admonition has a single direct-child title make it clickable.
     admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
     if (admonitionTitle) {
-      admonitionTitle.on('click', toggleClickHandler);
+      admonitionTitle.addEventListener('click', toggleClickHandler);
       admonitionTitle.dataset.target = toggleID
       admonitionTitle.dataset.button = buttonID
     }
+
+    // Now hide the item for this toggle button unless explicitly noted to show
     if (!item.classList.contains("toggle-shown")) {
-      toggleHidden(thisButton[0]);
+      toggleHidden(thisButton);
     }
   })
 };

@@ -74,8 +74,9 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # a list of builtin themes.
 #
 html_theme = "sphinx_book_theme"
-# html_theme = "sphinx_rtd_theme"
+# html_theme = "sphinx_rtd_theme"  # These are just for testing
 # html_theme = "alabaster"
+# html_theme = "furo"
 
 html_theme_options = {
     "repository_url": "https://github.com/executablebooks/sphinx-togglebutton",

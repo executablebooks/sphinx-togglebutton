@@ -121,6 +121,20 @@ This will generate the following block:
 This is my note.
 :::
 
+### Change the toggle button's background
+
+You can apply some extra styles to the toggle button to achieve the look you want.
+This is particularly useful if the color of the toggle button does not contrast with the background of an admonition.
+
+To style the toggle button, [add a custom CSS file to your documentation](https://docs.readthedocs.io/en/stable/guides/adding-custom-css.html) and include a custom CSS selector like so:
+
+```scss
+// Turn the background light grey
+button.toggle-button {
+  background: lightgrey;
+}
+```
+
 (toggle-directive)=
 ## Toggle any content with the toggle directive
 

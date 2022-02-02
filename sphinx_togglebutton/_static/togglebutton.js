@@ -25,7 +25,7 @@ var initToggleItems = () => {
 
     // This is the button that will be added to each item to trigger the toggle
     var collapseButton = `
-      <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}">
+      <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
           <img class="tb-icon" src="${path_static}togglebutton-chevron.svg">
       </button>`;
 

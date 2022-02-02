@@ -51,8 +51,16 @@
 
 /* General button style */
 button.toggle-button {
+    /**
+     * Background and shape. By default there's no background
+     * but users can style as they wish
+     */  
     background: none;
+    border-radius: 100%;
     border: none;
+    outline: none;
+
+    /* Positioning just to the right of elements */
     right: -2.5em;
     margin-left: -2.5em; /* A hack to keep code blocks from being pushed left */
     position: relative;
@@ -73,10 +81,6 @@ button.toggle-button {
 
 img.tb-icon {
     transition: transform .2s ease-out;
-}
-
-img.tb-icon:focus-visible {
-    outline: none;
 }
 
 .toggle-button-hidden img.tb-icon {

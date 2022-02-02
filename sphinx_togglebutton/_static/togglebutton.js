@@ -24,15 +24,15 @@ var initToggleItems = () => {
       item.insertAdjacentHTML('beforebegin', collapseButton);
     }
 
-    thisButton = $(`#${buttonID}`);
+    thisButton = document.getElementById(buttonID);
     thisButton.on('click', toggleClickHandler);
     // If the toggleable has a single direct child admonition title,
     // make that clickable also.
-    admonitionTitleSelect = $(`#${toggleID} > .admonition-title`)
-    if (admonitionTitleSelect.length == 1) {
-      admonitionTitleSelect.on('click', toggleClickHandler);
-      admonitionTitleSelect[0].dataset.target = toggleID
-      admonitionTitleSelect[0].dataset.button = buttonID
+    admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
+    if (admonitionTitle) {
+      admonitionTitle.on('click', toggleClickHandler);
+      admonitionTitle[0].dataset.target = toggleID
+      admonitionTitle[0].dataset.button = buttonID
     }
     if (!item.classList.contains("toggle-shown")) {
       toggleHidden(thisButton[0]);

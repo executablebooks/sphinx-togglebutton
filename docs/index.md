@@ -40,7 +40,7 @@ For a bootstrap-based "dropdown" directive that uses pure CSS, check out
 
 ```{toctree}
 use
-reference
+reference/index
 ```
 
 ## Installation

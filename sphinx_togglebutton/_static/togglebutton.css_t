@@ -38,7 +38,7 @@
 }
 
 .toggle.admonition.admonition-title:after {
-    content: "" !important;
+    content: "";
 }
 
 /* Note, we'll over-ride this in sphinx-book-theme */
@@ -51,16 +51,13 @@
 
 /* General button style */
 button.toggle-button {
-    background: #999;
+    background: none;
     border: none;
-    z-index: 100;
     right: -2.5em;
     margin-left: -2.5em; /* A hack to keep code blocks from being pushed left */
     position: relative;
     float: right;
-    border-radius: 100%;
     width: 1.5em;
-    height: 1.5em;
     padding: 0px;
 }
 
@@ -74,22 +71,15 @@ button.toggle-button {
     }
 }
 
-
-/* Plus / minus toggles */
-.toggle-button .bar {
-    background-color: white;
-    position: absolute;
-    left: 15%;
-    top: 43%;
-    width: 16px;
-    height: 3px;
+img.tb-icon {
+    transition: transform .2s ease-out;
 }
 
-.toggle-button .vertical {
-    transition: all 0.25s ease-in-out;
-    transform-origin: center;
+img.tb-icon:focus-visible {
+    outline: none;
 }
 
-.toggle-button-hidden .vertical {
-    transform: rotate(-90deg);
+.toggle-button-hidden img.tb-icon {
+    transform: rotate(90deg);
 }
+

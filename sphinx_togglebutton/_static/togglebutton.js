@@ -1,3 +1,14 @@
+/**
+ * Add Toggle Buttons to elements
+ */
+
+let doc_url_root = DOCUMENTATION_OPTIONS.URL_ROOT;
+if (doc_url_root == '#') {
+    doc_url_root = '';
+}
+
+const path_static = `${doc_url_root}_static/`;
+
 var initToggleItems = () => {
   var itemsToToggle = document.querySelectorAll(togglebuttonSelector);
   console.log(`[togglebutton]: Adding toggle buttons to ${itemsToToggle.length} items`)
@@ -15,8 +26,7 @@ var initToggleItems = () => {
     // This is the button that will be added to each item to trigger the toggle
     var collapseButton = `
       <button id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
-          <div class="bar horizontal" data-button="${buttonID}"></div>
-          <div class="bar vertical" data-button="${buttonID}"></div>
+          <img class="tb-icon" src="${path_static}togglebutton-chevron.svg">
       </button>`;
 
     // Add the button HTML to this element and assign it as a variable to use later
@@ -60,7 +70,12 @@ var toggleHidden = (button) => {
 }
 
 var toggleClickHandler = (click) => {
-  button = document.getElementById(click.target.dataset['button']);
+  if (click.target.tagName == "IMG") {
+    parent = click.target.parentElement;
+  } else {
+    parent = click.target;
+  }
+  button = document.getElementById(parent.dataset['button']);
   toggleHidden(button);
 }
 

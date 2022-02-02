@@ -31,11 +31,11 @@ a = "wow, very python"
 
 See {ref}`usage` for more information.
 
-:::{admonition} Check out sphinx-panels as well!
+:::{admonition} Check out sphinx-design as well!
 :class: tip
 
 For a bootstrap-based "dropdown" directive that uses pure CSS, check out
-[Sphinx Panels](https://sphinx-panels.readthedocs.io/en/latest/#dropdown-usage)
+[Sphinx Design](https://sphinx-design.readthedocs.io/en/latest/dropdowns.html)
 :::
 
 ```{toctree}

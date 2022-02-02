@@ -31,8 +31,8 @@ var initToggleItems = () => {
     admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
     if (admonitionTitle) {
       admonitionTitle.on('click', toggleClickHandler);
-      admonitionTitle[0].dataset.target = toggleID
-      admonitionTitle[0].dataset.button = buttonID
+      admonitionTitle.dataset.target = toggleID
+      admonitionTitle.dataset.button = buttonID
     }
     if (!item.classList.contains("toggle-shown")) {
       toggleHidden(thisButton[0]);

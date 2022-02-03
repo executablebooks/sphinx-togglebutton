@@ -89,7 +89,7 @@ details.toggle-details summary {
     align-items: center;
     width: fit-content;
     list-style: none;
-    border-radius: .2em;
+    border-radius: .4em;
     border: 1px solid #ccc;
     background: #f8f8f8;
     padding: 0.2em 1em .2em 0;

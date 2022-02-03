@@ -89,7 +89,7 @@ details.toggle-details {
 details.toggle-details summary {
     list-style: none;
     border-radius: .2em;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     background: #f8f8f8;
     padding: 0.2em .5em .2em .5em;
 }

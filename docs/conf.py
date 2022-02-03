@@ -103,7 +103,6 @@ myst_enable_extensions = ["colon_fence"]
 #
 # html_sidebars = {}
 
-
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.

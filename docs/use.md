@@ -3,140 +3,98 @@
 
 This page covers how to use and configure / customize `sphinx-togglebutton`.
 
-There are two main ways to use `sphinx-togglebutton`:
+There are three main ways to use `sphinx-togglebutton`:
 
+- Wrap arbitrary objects in a toggle button via a CSS selector
 - Collapse admonitions with the `dropdown` class
 - Make arbitrary chunks of content "toggle-able" with the `toggle` directive
 
-Both are described below
+Each is described below
+
+(use:css-selector)=
+## Collapse a block of content with a CSS selector
+
+You can hide any content and display a toggle button to show it by using certain CSS classes.
+`sphinx-togglebutton` will wrap elements with these classes in a `<details>` block like so:
+
+```html
+<details>
+  <summary>Click to show</summary>
+  <!-- Element that had a CSS class selector -->
+</details>
+```
+
+:::{admonition} example
+:class: tip
+This MyST Markdown:
+
+````md
+```{image} https://media.giphy.com/media/FaKV1cVKlVRxC/giphy.gif
+:class: toggle
+```
+````
+results in:
+```{image} https://media.giphy.com/media/FaKV1cVKlVRxC/giphy.gif
+:class: toggle
+```
+:::
+
+### Configure the CSS selector used to insert toggle buttons
+
+By default, `sphinx-togglebutton` will use this selector:
+
+```
+.toggle, .admonition.dropdown
+```
+
+However, you can customize this behavior with the `togglebutton_selector` configuration value.
+To specify the selector to use, pass a valid CSS selector as a string:
+
+:::{admonition} example
+:class: tip
+Configure `sphinx-togglebutton` to look for a `.toggle-this-element` class and an element with ID `#my-special-id` **instead of** `.toggle` and `.admonition.dropdown`.
+
+```python
+sphinx_togglebutton_selector = ".toggle-this-element, #my-special-id"
+```
+:::
 
 (dropdown-admonitions)=
 ## Collapse admonitions with the `dropdown` class
 
-Making dropdown admonitions allows you to insert extra information in your document
-without forcing the user to see that content. For example:
+`sphinx-togglebutton` treats admonitions as a special case if they are selected.
+If a Sphinx admonition matches the toggle button selector, then its title will be displayed with a button to reveal its content.
 
-:::{admonition} What could be inside this warning?
-:class: warning, dropdown
-
-A whale of a joke!
-
-```{image} https://media.giphy.com/media/FaKV1cVKlVRxC/giphy.gif
-```
-:::
-
-Create a dropdown admonition by adding the `dropdown` class to an admonition directive.
-For example, like so:
-
-::::{tab-set}
-
-:::{tab-item} MyST
-
+:::{admonition} example
+:class: tip
 ````md
-
-```{note}
+```{admonition} This will be shown
 :class: dropdown
-
-My note
+And this will be hidden!
 ```
 ````
-
-:::
-
-:::{tab-item} reStructuredText
-
-```rst
-.. note::
-   :class: dropdown
-
-   My note
+results in 
+```{admonition} This will be shown
+:class: dropdown
+And this will be hidden!
 ```
-
-:::
-::::
-
-You can use a custom admonition title and apply the style of a "built-in"
-admonition (e.g., `note`, `warning`, etc) with the `admonition::` directive:
-
-::::{tab-set}
-
-:::{tab-item} MyST
-
-````md
-```{admonition} Here's my title
-:class: dropdown, warning
-
-My note
-```
-````
-
 :::
 
-:::{tab-item} reStructuredText
-
-```rst
-.. admonition:: Here's my title
-   :class: dropdown, warning
-
-   My note
-```
-
-:::
-::::
-
-Creates:
-
-:::{admonition} Here's my title
-:class: dropdown, warning
-
-My custom admonition!
-:::
-
-To show the content by default, add a `toggle-shown` class as well.
-
-:::{tab-set-code}
-
-````markdown
-```{note}
-:class: dropdown, toggle-shown
-
-This is my note.
-```
-````
-
-```rst
-.. note::
-    :class: dropdown, toggle-shown
-
-    This is my note.
-```
-
-:::
-
-This will generate the following block:
+This works for any kind of Sphinx admoniton:
 
 :::{note}
-:class: dropdown, toggle-shown
-
-This is my note.
+:class: dropdown
+A note!
 :::
 
-### Change the toggle button's background
+:::{warning}
+:class: dropdown
+A warning!
+:::
 
-You can apply some extra styles to the toggle button to achieve the look you want.
-This is particularly useful if the color of the toggle button does not contrast with the background of an admonition.
-
-To style the toggle button, [add a custom CSS file to your documentation](https://docs.readthedocs.io/en/stable/guides/adding-custom-css.html) and include a custom CSS selector like so:
-
-```scss
-// Turn the background light grey
-button.toggle-button {
-  background: lightgrey;
-}
-```
 
 (toggle-directive)=
-## Toggle any content with the toggle directive
+## Use the `{toggle}` directive to toggle blocks of content
 
 To add toggle-able content, use the **toggle directive**. This directive
 will wrap its content in a toggle-able container. You can call it like so:
@@ -183,12 +141,32 @@ It results in the following:
 Here is my toggle-able content!
 :::
 
-## Control the togglebutton hover text
+## Control the togglebutton hint text
 
-You can control the "hint" text that is displayed next to togglebuttons when
-their content is collapsed. To do so, use the following configuration variable
-in your `conf.py` file:
+You can control the "hint" text that is displayed next to togglebuttons.
+To do so, use the following configuration variable in your `conf.py` file:
 
 ```python
-togglebutton_hint = "My text"
+togglebutton_hint = "Displayed when the toggle is closed."
+togglebutton_hint_hide = "Displayed when the toggle is open."
+```
+
+## Change the toggle icon color
+
+You can apply some extra styles to the toggle button to achieve the look you want.
+This is particularly useful if the color of the toggle button does not contrast with the background of an admonition.
+
+To style the toggle button, [add a custom CSS file to your documentation](https://docs.readthedocs.io/en/stable/guides/adding-custom-css.html) and include a custom CSS selector like so:
+
+```scss
+// Turn the color red...
+// ...with admonition toggle buttons
+button.toggle-button {
+  color: red;
+}
+
+// ...with content block toggle buttons
+.toggle-button summary {
+  color: red;
+}
 ```

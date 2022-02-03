@@ -2,12 +2,11 @@
  * Add Toggle Buttons to elements
  */
 
-let doc_url_root = DOCUMENTATION_OPTIONS.URL_ROOT;
-if (doc_url_root == '#') {
-    doc_url_root = '';
-}
-
-const path_static = `${doc_url_root}_static/`;
+let toggleChevron = `
+<svg xmlns="http://www.w3.org/2000/svg" class="tb-icon toggle-chevron-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+<polyline points="9 6 15 12 9 18" />
+</svg>`;
 
 var initToggleItems = () => {
   var itemsToToggle = document.querySelectorAll(togglebuttonSelector);
@@ -26,8 +25,8 @@ var initToggleItems = () => {
       }
       // This is the button that will be added to each item to trigger the toggle
       var collapseButton = `
-        <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
-            <img class="tb-icon" src="${path_static}togglebutton-chevron.svg">
+        <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}", data-toggle-hint="${toggleHintShow}">
+            ${toggleChevron}
         </button>`;
 
       item.insertAdjacentHTML("afterbegin", collapseButton);
@@ -35,8 +34,6 @@ var initToggleItems = () => {
 
       // Add click handlers for the button + admonition title (if admonition)
       thisButton.addEventListener('click', toggleClickHandler);
-
-      // If admonition has a single direct-child title make it clickable.
       admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
       if (admonitionTitle) {
         admonitionTitle.addEventListener('click', toggleClickHandler);
@@ -53,7 +50,10 @@ var initToggleItems = () => {
       // Define the structure of the details block and insert it as a sibling
       var detailsBlock = `
         <details class="toggle-details">
-            <summary><span>Click to toggle</span><img class="tb-icon" src="${path_static}togglebutton-chevron.svg"></summary>
+            <summary>
+              ${toggleChevron}
+              <span>${toggleHintShow}</span>
+            </summary>
         </details>`;
       item.insertAdjacentHTML("beforebegin", detailsBlock);
 
@@ -61,9 +61,28 @@ var initToggleItems = () => {
       details = item.previousElementSibling
       details.appendChild(item)
 
+      // Set up a click trigger to change the text as needed
+      details.addEventListener('click', (click) => {
+        let parent = click.target.parentElement;
+        if (parent.tagName.toLowerCase() == "details") {
+          summary = parent.querySelector("summary");
+          details = parent;
+        } else {
+          summary = parent;
+          details = parent.parentElement;
+        }
+        // Update the inner text for the proper hint
+        if (details.open) {
+          summary.querySelector("span").innerText = toggleHintShow;
+        } else {
+          summary.querySelector("span").innerText = toggleHintHide;
+        }
+        
+      });
+
       // If we have a toggle-shown class, open details block should be open
       if (item.classList.contains("toggle-shown")) {
-        details.open = true;
+        details.click();
       }
     }
   })
@@ -83,13 +102,15 @@ var toggleHidden = (button) => {
 }
 
 var toggleClickHandler = (click) => {
-  if (click.target.tagName == "IMG") {
-    parent = click.target.parentElement;
+  if (click.target.classList.contains("admonition-title")) {
+    // If it's an admonition title, the button will be just before
+    button = click.target.previousElementSibling;
   } else {
-    parent = click.target;
+    // If not, we've clicked the button itself or its content, so search upwards
+    button = click.currentTarget;
   }
-  button = document.getElementById(parent.dataset['button']);
-  toggleHidden(button);
+  target = document.getElementById(button.dataset['button']);
+  toggleHidden(target);
 }
 
 // If we want to blanket-add toggle classes to certain cells

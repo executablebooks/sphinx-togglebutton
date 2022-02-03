@@ -36,7 +36,6 @@ button.toggle-button {
      * but users can style as they wish
      */  
     background: none;
-    border-radius: 100%;
     border: none;
     outline: none;
 
@@ -44,7 +43,7 @@ button.toggle-button {
     margin-right: 0.5em;
     position: absolute;
     right: 0em;
-    top: .3em;
+    top: .5em;
     float: right;
     width: 1.5em;
     height: 1.5em;
@@ -55,7 +54,7 @@ button.toggle-button {
 /* Display the toggle hint on wide screens */
 @media (min-width: 768px) {
     button.toggle-button.toggle-button-hidden:before {
-        content: "{{ togglebutton_hint }}";
+        content: attr(data-toggle-hint);  /* This will be filled in by JS */
         position: absolute;
         font-size: .8em;
         left: -6.5em;
@@ -64,11 +63,14 @@ button.toggle-button {
 }
 
 /* Icon behavior */
-img.tb-icon {
+.tb-icon {
     transition: transform .2s ease-out;
+    height: 1.5em;
+    width: 1.5em;
+    stroke: currentColor;  /* So that we inherit the color of other text */
 }
 
-.toggle-button-hidden img.tb-icon {
+.toggle-button-hidden .tb-icon {
     transform: rotate(90deg);
 }
 
@@ -83,24 +85,25 @@ details.toggle-details {
 }
 
 details.toggle-details summary {
+    display: flex;
+    align-items: center;
+    width: fit-content;
     list-style: none;
     border-radius: .2em;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     background: #f8f8f8;
-    padding: 0.2em .5em .2em .5em;
+    padding: 0.2em 1em .2em 0;
 }
 
-details.toggle-details summary img {
-    float: right;
-    height: 1.5em;
-    transition: transform .3s ease-out;
+details.toggle-details .tb-icon {
+    margin-left: .2em;
 }
 
 details.toggle-details[open] summary {
     margin-bottom: .5em;
 }
 
-details.toggle-details[open] summary img {
+details.toggle-details[open] summary .tb-icon {
     transform: rotate(90deg);
 }
 

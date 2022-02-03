@@ -80,10 +80,6 @@ img.tb-icon {
 /* Details blocks */
 details.toggle-details {
     margin: 1em 0;
-    height: auto;
-    max-height: 2.5em;
-    overflow-y: hidden;
-    transition: max-height .5s ease-out;
 }
 
 details.toggle-details summary {
@@ -98,10 +94,6 @@ details.toggle-details summary img {
     float: right;
     height: 1.5em;
     transition: transform .3s ease-out;
-}
-
-details.toggle-details[open] {
-    max-height: 99em;
 }
 
 details.toggle-details[open] summary {

@@ -1,25 +1,27 @@
-/* Visibility of the target */
-.toggle, .admonition.toggle .admonition-title ~ * {
-    transition: opacity .5s, height .5s;
-}
+/**
+ * Admonition-based toggles
+ */
 
-.toggle-hidden:not(.admonition) {
-    visibility: hidden;
-    opacity: 0;
-    height: 1.5em;
-    margin: 0px;
-    padding: 0px;
+/* Visibility of the target */
+.admonition.toggle .admonition-title ~ * {
+    transition: opacity .5s, height .5s;
 }
 
 /* Overrides for admonition toggles */
 
+/* Toggle buttons inside admonitions so we see the title */
+.toggle.admonition {
+    position: relative;
+}
+
 /* Titles should cut off earlier to avoid overlapping w/ button */
-.admonition.toggle p.admonition-title {
+.toggle.admonition .admonition-title {
     padding-right: 25%;
+    cursor: pointer;
 }
 
 /* hides all the content of a page until de-toggled */
-.admonition.toggle-hidden .admonition-title ~ * {
+.toggle-hidden.admonition .admonition-title ~ * {
     height: 0;
     margin: 0;
     float: left; /* so they overlap when hidden */
@@ -27,29 +29,7 @@
     visibility: hidden;
 }
 
-/* Toggle buttons inside admonitions so we see the title */
-.toggle.admonition {
-    position: relative;
-}
-
-/* Clicking the title will toggle the admonition, so a pointer makes this clearer */
-.toggle.admonition .admonition-title {
-    cursor: pointer;
-}
-
-.toggle.admonition.admonition-title:after {
-    content: "";
-}
-
-/* Note, we'll over-ride this in sphinx-book-theme */
-.toggle.admonition button.toggle-button {
-    margin-right: 0.5em;
-    right: 0em;
-    position: absolute;
-    top: .3em;
-}
-
-/* General button style */
+/* General button style and position*/
 button.toggle-button {
     /**
      * Background and shape. By default there's no background
@@ -60,10 +40,11 @@ button.toggle-button {
     border: none;
     outline: none;
 
-    /* Positioning just to the right of elements */
-    right: -2.5em;
-    margin-left: -2.5em; /* A hack to keep code blocks from being pushed left */
-    position: relative;
+    /* Positioning just inside the amonition title */
+    margin-right: 0.5em;
+    position: absolute;
+    right: 0em;
+    top: .3em;
     float: right;
     width: 1.5em;
     height: 1.5em;
@@ -71,6 +52,7 @@ button.toggle-button {
     display: flex;
 }
 
+/* Display the toggle hint on wide screens */
 @media (min-width: 768px) {
     button.toggle-button.toggle-button-hidden:before {
         content: "{{ togglebutton_hint }}";
@@ -81,6 +63,7 @@ button.toggle-button {
     }
 }
 
+/* Icon behavior */
 img.tb-icon {
     transition: transform .2s ease-out;
 }
@@ -89,3 +72,51 @@ img.tb-icon {
     transform: rotate(90deg);
 }
 
+/**
+ * Details-based toggles.
+ * In this case, we wrap elements with `.toggle` in a details block.
+ */
+
+/* Details blocks */
+details.toggle-details {
+    margin: 1em 0;
+    height: auto;
+    max-height: 2.5em;
+    overflow-y: hidden;
+    transition: max-height .5s ease-out;
+}
+
+details.toggle-details summary {
+    list-style: none;
+    border-radius: .2em;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 0.2em .5em .2em .5em;
+}
+
+details.toggle-details summary img {
+    float: right;
+    height: 1.5em;
+    transition: transform .2s ease-out;
+}
+
+details.toggle-details summary ~ * {
+    transition: opacity .2s ease-out;
+    opacity: 0;
+}
+
+details.toggle-details[open] {
+    max-height: 99em;
+}
+
+details.toggle-details[open] summary {
+    margin-bottom: .5em;
+}
+
+details.toggle-details[open] summary img {
+    transform: rotate(90deg);
+}
+
+details.toggle-details[open] summary ~ * {
+    opacity: 1;
+}

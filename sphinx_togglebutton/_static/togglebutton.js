@@ -14,44 +14,57 @@ var initToggleItems = () => {
   console.log(`[togglebutton]: Adding toggle buttons to ${itemsToToggle.length} items`)
   // Add the button to each admonition and hook up a callback to toggle visibility
   itemsToToggle.forEach((item, index) => {
-    // Generate unique IDs for this item
-    var toggleID = `toggle-${index}`;
-    var buttonID = `button-${toggleID}`;
-
-    item.setAttribute('id', toggleID);
-    if (!item.classList.contains("toggle")){
-      item.classList.add("toggle");
-    }
-
-    // This is the button that will be added to each item to trigger the toggle
-    var collapseButton = `
-      <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
-          <img class="tb-icon" src="${path_static}togglebutton-chevron.svg">
-      </button>`;
-
-    // Add the button HTML to this element and assign it as a variable to use later
     if (item.classList.contains("admonition")) {
-      // If it's an admonition block, then we'll add the button inside
+      // If it's an admonition block, then we'll add a button inside
+      // Generate unique IDs for this item
+      var toggleID = `toggle-${index}`;
+      var buttonID = `button-${toggleID}`;
+
+      item.setAttribute('id', toggleID);
+      if (!item.classList.contains("toggle")){
+        item.classList.add("toggle");
+      }
+      // This is the button that will be added to each item to trigger the toggle
+      var collapseButton = `
+        <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}">
+            <img class="tb-icon" src="${path_static}togglebutton-chevron.svg">
+        </button>`;
+
       item.insertAdjacentHTML("afterbegin", collapseButton);
+      thisButton = document.getElementById(buttonID);
+
+      // Add click handlers for the button + admonition title (if admonition)
+      thisButton.addEventListener('click', toggleClickHandler);
+
+      // If admonition has a single direct-child title make it clickable.
+      admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
+      if (admonitionTitle) {
+        admonitionTitle.addEventListener('click', toggleClickHandler);
+        admonitionTitle.dataset.target = toggleID
+        admonitionTitle.dataset.button = buttonID
+      }
+
+      // Now hide the item for this toggle button unless explicitly noted to show
+      if (!item.classList.contains("toggle-shown")) {
+        toggleHidden(thisButton);
+      }
     } else {
-      item.insertAdjacentHTML('beforebegin', collapseButton);
-    }
-    thisButton = document.getElementById(buttonID);
-    
-    // Add click handlers for the button + admonition title (if admonition)
-    thisButton.addEventListener('click', toggleClickHandler);
+      // If not an admonition, wrap the block in a <details> block
+      // Define the structure of the details block and insert it as a sibling
+      var detailsBlock = `
+        <details class="toggle-details">
+            <summary><span>Click to toggle</span><img class="tb-icon" src="${path_static}togglebutton-chevron.svg"></summary>
+        </details>`;
+      item.insertAdjacentHTML("beforebegin", detailsBlock);
 
-    // If admonition has a single direct-child title make it clickable.
-    admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
-    if (admonitionTitle) {
-      admonitionTitle.addEventListener('click', toggleClickHandler);
-      admonitionTitle.dataset.target = toggleID
-      admonitionTitle.dataset.button = buttonID
-    }
+      // Now move the toggle-able content inside of the details block
+      details = item.previousElementSibling
+      details.appendChild(item)
 
-    // Now hide the item for this toggle button unless explicitly noted to show
-    if (!item.classList.contains("toggle-shown")) {
-      toggleHidden(thisButton);
+      // If we have a toggle-shown class, open details block should be open
+      if (item.classList.contains("toggle-shown")) {
+        details.open = true;
+      }
     }
   })
 };

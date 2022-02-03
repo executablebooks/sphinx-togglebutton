@@ -4,7 +4,7 @@
 
 /* Visibility of the target */
 .admonition.toggle .admonition-title ~ * {
-    transition: opacity .5s, height .5s;
+    transition: opacity .3s, height .3s;
 }
 
 /* Overrides for admonition toggles */
@@ -97,12 +97,7 @@ details.toggle-details summary {
 details.toggle-details summary img {
     float: right;
     height: 1.5em;
-    transition: transform .2s ease-out;
-}
-
-details.toggle-details summary ~ * {
-    transition: opacity .2s ease-out;
-    opacity: 0;
+    transition: transform .3s ease-out;
 }
 
 details.toggle-details[open] {
@@ -118,5 +113,10 @@ details.toggle-details[open] summary img {
 }
 
 details.toggle-details[open] summary ~ * {
-    opacity: 1;
+    animation: toggle-fade-in .3s ease-out;
+}
+
+@keyframes toggle-fade-in {
+  from {opacity: 0%;}
+  to {opacity: 100%;}
 }

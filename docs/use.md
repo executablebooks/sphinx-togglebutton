@@ -141,7 +141,7 @@ It results in the following:
 Here is my toggle-able content!
 :::
 
-## Control the togglebutton hint text
+## Change the button hint text
 
 You can control the "hint" text that is displayed next to togglebuttons.
 To do so, use the following configuration variable in your `conf.py` file:

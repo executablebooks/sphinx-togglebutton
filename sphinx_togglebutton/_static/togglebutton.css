@@ -99,10 +99,6 @@ details.toggle-details summary {
     font-size: .9em;
 }
 
-details.toggle-details .tb-icon {
-    margin-left: .2em;
-}
-
 details.toggle-details[open] summary {
     margin-bottom: .5em;
 }

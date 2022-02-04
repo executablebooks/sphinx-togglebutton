@@ -1,47 +1,57 @@
 # `sphinx-togglebutton`
 
 A small sphinx extension to add "toggle button" elements to sections of your page.
-This allows you to:
+For example:
 
-- Collapse admonitions (notes, warnings, etc) so that their content is hidden
-  until users click a toggle button. See {ref}`dropdown-admonitions`.
-- Collapse arbitrary chunks of content on your page with a `toggle` directive.
-  See {ref}`toggle-directive`.
+## Collapse admonitions
 
-:::{admonition} For example, click the "+" button to the right:
+You can collapse admonitions (notes, warnings, etc) so that their content is hidden until users click the admonition title.
+
+:::{admonition} Example: click this title to toggle the content
+:class: dropdown
+You can toggle any admonition to hide its content behind a user click!
+Do so by adding a `dropdown` class to the admonition, like this:
+
+````
+```{note}
 :class: dropdown
 
-Here's a toggled note! You can put all kinds of stuff in here!
+Some content
+```
+````
 :::
 
-You can also add a toggle button to arbitrary chunks of content.
-For example, click the toggle button to the right just below.
+See {ref}`dropdown-admonitions` for more information.
+
+## Hide any content behind a toggle button
+
+You can also hide arbitrary content behind a toggle button.
+When users press the button, they will see the content.
+For example:
 
 ::::{toggle}
-:::{admonition} Wow!
-:class: tip
 
-It's a code block!
+This is a toggled content block!
+It was added like this:
 
-```python
-a = "wow, very python"
+````
+```{toggle}
+This is a toggled content block!
 ```
-:::
+````
+
 ::::
 
-See {ref}`usage` for more information.
+You can either do this with a `{toggle}` directive, or by adding a `toggle` CSS class to any elements you'd like hidden behind a toggle button.
 
-:::{admonition} Check out sphinx-panels as well!
+See [](use:css-selector) for more details.
+
+:::{admonition} Check out sphinx-design as well!
 :class: tip
 
 For a bootstrap-based "dropdown" directive that uses pure CSS, check out
-[Sphinx Panels](https://sphinx-panels.readthedocs.io/en/latest/#dropdown-usage)
+[Sphinx Design](https://sphinx-design.readthedocs.io/en/latest/dropdowns.html)
 :::
-
-```{toctree}
-use
-reference
-```
 
 ## Installation
 
@@ -65,3 +75,10 @@ extensions = [
 ```
 
 See {ref}`usage` for information about how to use `sphinx-togglebutton`.
+
+
+```{toctree}
+:maxdepth: 2
+use
+reference/index
+```

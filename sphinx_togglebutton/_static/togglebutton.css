@@ -115,3 +115,19 @@ details.toggle-details[open] summary ~ * {
   from {opacity: 0%;}
   to {opacity: 100%;}
 }
+
+/* Print rules - we hide all toggle button elements at print */
+@media print {
+    .toggle-hidden.admonition {
+      display: none;
+    }
+
+    details.toggle-details:not([open]) {
+        display: none;
+    }
+
+    /* Always hide the summary so the button doesn't show up */
+    details.toggle-details summary {
+        display: none;
+    }
+  }

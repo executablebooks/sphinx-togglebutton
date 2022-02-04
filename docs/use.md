@@ -170,3 +170,8 @@ button.toggle-button {
   color: red;
 }
 ```
+
+## Printing behavior with toggle buttons
+
+When you print the screen while using `sphinx-togglebutton`, the toggle-able content will not show up.
+To reveal it for printing, you must manually un-toggle the items and then print.

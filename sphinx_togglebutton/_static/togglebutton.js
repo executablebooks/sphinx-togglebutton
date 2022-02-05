@@ -137,3 +137,36 @@ const sphinxToggleRunWhenDOMLoaded = cb => {
 }
 sphinxToggleRunWhenDOMLoaded(addToggleToSelector)
 sphinxToggleRunWhenDOMLoaded(initToggleItems)
+
+/** Toggle details blocks to be open when printing */
+if (toggleOpenOnPrint == "true") {
+  window.addEventListener("beforeprint", () => {
+    // Open the details
+    document.querySelectorAll("details.toggle-details").forEach((el) => {
+      el.dataset["togglestatus"] = el.open;
+      el.open = true;
+    });
+  
+    // Open the admonitions
+    document.querySelectorAll(".admonition.toggle.toggle-hidden").forEach((el) => {
+      console.log(el);
+      el.querySelector("button.toggle-button").click();
+      el.dataset["toggle_after_print"] = "true";
+    });
+  });
+  window.addEventListener("afterprint", () => {
+    // Re-close the details that were closed
+    document.querySelectorAll("details.toggle-details").forEach((el) => {
+      el.open = el.dataset["togglestatus"] == "true";
+      delete el.dataset["togglestatus"];
+    });
+  
+    // Re-close the admonition toggle buttons
+    document.querySelectorAll(".admonition.toggle").forEach((el) => {
+      if (el.dataset["toggle_after_print"] == "true") {
+        el.querySelector("button.toggle-button").click();
+        delete el.dataset["toggle_after_print"];
+      }
+    });
+  });
+}

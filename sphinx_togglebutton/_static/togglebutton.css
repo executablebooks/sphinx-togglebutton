@@ -7,8 +7,6 @@
     transition: opacity .3s, height .3s;
 }
 
-/* Overrides for admonition toggles */
-
 /* Toggle buttons inside admonitions so we see the title */
 .toggle.admonition {
     position: relative;
@@ -53,10 +51,8 @@ button.toggle-button {
 @media (min-width: 768px) {
     button.toggle-button.toggle-button-hidden:before {
         content: attr(data-toggle-hint);  /* This will be filled in by JS */
-        position: absolute;
         font-size: .8em;
-        left: -6.5em;
-        bottom: .4em;
+        align-self: center;
     }
 }
 
@@ -91,12 +87,21 @@ details.toggle-details summary {
     display: flex;
     align-items: center;
     width: fit-content;
+    cursor: pointer;
     list-style: none;
     border-radius: .4em;
     border: 1px solid #ccc;
     background: #f8f8f8;
     padding: 0.4em 1em 0.4em 0.5em; /* Less padding on left because the SVG has left margin */
     font-size: .9em;
+}
+
+details.toggle-details summary:hover {
+    background: #f6f6f6;
+}
+
+details.toggle-details summary:active {
+    background: #eee;
 }
 
 details.toggle-details[open] summary {
@@ -114,4 +119,12 @@ details.toggle-details[open] summary ~ * {
 @keyframes toggle-fade-in {
   from {opacity: 0%;}
   to {opacity: 100%;}
+}
+
+/* Print rules - we hide all toggle button elements at print */
+@media print {
+    /* Always hide the summary so the button doesn't show up */
+    details.toggle-details summary {
+        display: none;
+    }
 }

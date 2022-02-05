@@ -173,5 +173,10 @@ button.toggle-button {
 
 ## Printing behavior with toggle buttons
 
-When you print the screen while using `sphinx-togglebutton`, the toggle-able content will not show up.
-To reveal it for printing, you must manually un-toggle the items and then print.
+By default `sphinx-togglebutton` will **open all toggle-able content when you print**.
+It will close them again when the printing operation is complete.
+To disable this behavior, use the following configuration in `conf.py`:
+
+```python
+togglebutton_open_on_print = False
+```

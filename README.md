@@ -7,7 +7,7 @@ sections of your page. This allows you to:
   until users click a toggle button.
 - Collapse arbitrary chunks of content on your page with a `collapse` directive.
 
-![demo gif](docs/_static/demo.gif)
+![Demonstration of Sphinx Togglebutton](https://user-images.githubusercontent.com/1839645/152654312-a72a320f-e1e0-40be-95ae-3ed34facc4d3.gif)
 
 
 Installation

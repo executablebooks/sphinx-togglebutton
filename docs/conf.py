@@ -88,6 +88,11 @@ html_theme_options = {
 
 myst_enable_extensions = ["colon_fence"]
 
+# To test behavior in JS
+# togglebutton_hint = "test show"
+# togglebutton_hint_hide = "test hide"
+# togglebutton_open_on_print = False
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".

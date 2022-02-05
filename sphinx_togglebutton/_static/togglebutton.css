@@ -21,6 +21,8 @@
 }
 
 /* hides all the content of a page until de-toggled */
+/* this doesn't apply when printing */
+
 .toggle-hidden.admonition .admonition-title ~ * {
     height: 0;
     margin: 0;
@@ -53,10 +55,7 @@ button.toggle-button {
 @media (min-width: 768px) {
     button.toggle-button.toggle-button-hidden:before {
         content: attr(data-toggle-hint);  /* This will be filled in by JS */
-        position: absolute;
         font-size: .8em;
-        left: -6.5em;
-        bottom: .4em;
     }
 }
 
@@ -118,16 +117,8 @@ details.toggle-details[open] summary ~ * {
 
 /* Print rules - we hide all toggle button elements at print */
 @media print {
-    .toggle-hidden.admonition {
-      display: none;
-    }
-
-    details.toggle-details:not([open]) {
-        display: none;
-    }
-
     /* Always hide the summary so the button doesn't show up */
     details.toggle-details summary {
         display: none;
     }
-  }
+}

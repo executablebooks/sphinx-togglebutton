@@ -15,6 +15,8 @@ def initialize_js_assets(app, config):
     # Update the global context
     app.add_js_file(None, body=f"let toggleHintShow = '{config.togglebutton_hint}';")
     app.add_js_file(None, body=f"let toggleHintHide = '{config.togglebutton_hint_hide}';")
+    open_print = str(config.togglebutton_open_on_print).lower()
+    app.add_js_file(None, body=f"let toggleOpenOnPrint = '{open_print}';")
     app.add_js_file("togglebutton.js")
 
 
@@ -59,6 +61,7 @@ def setup(app):
     app.add_config_value("togglebutton_selector", ".toggle, .admonition.dropdown", "html")
     app.add_config_value("togglebutton_hint", "Click to show", "html")
     app.add_config_value("togglebutton_hint_hide", "Click to hide", "html")
+    app.add_config_value("togglebutton_open_on_print", True, "html")
 
     # Run the function after the builder is initialized
     app.connect("builder-inited", insert_custom_selection_config)

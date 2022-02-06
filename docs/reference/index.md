@@ -1,17 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
----
-
 # Reference examples
 
 This page shows the most common ways that `sphinx-togglebutton` is used as a reference.
@@ -75,38 +61,3 @@ Admonition content.
 ```{image} https://jupyterbook.org/_static/logo-wide.svg
 ```
 :::
-
-## MyST-NB Cells
-
-```{code-cell}
-from matplotlib import pyplot as plt
-import numpy as np
-data = np.random.randn(3, 100)
-```
-
-### Hide Input
-
-```{code-cell}
-:tags: [hide-input]
-
-fig, ax = plt.subplots()
-ax.scatter(data[0], data[1], c=np.abs(data[2]))
-```
-
-### Hide Output
-
-```{code-cell}
-:tags: [hide-output]
-
-fig, ax = plt.subplots()
-ax.scatter(data[0], data[1], c=np.abs(data[2]))
-```
-
-### Hide Both
-
-```{code-cell}
-:tags: [hide-cell]
-
-fig, ax = plt.subplots()
-ax.scatter(data[0], data[1], c=np.abs(data[2]))
-```

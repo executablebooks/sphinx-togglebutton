@@ -27,6 +27,6 @@ setup(
         "sphinx_togglebutton": ["_static/togglebutton.css", "_static/togglebutton.js", "_static/togglebutton-chevron.svg"]
     },
     install_requires=["setuptools", "wheel", "sphinx", "docutils"],
-    extras_require={"sphinx": ["matplotlib", "myst_nb", "sphinx_book_theme", "sphinx_design"]},
+    extras_require={"sphinx": ["myst_parser", "sphinx_book_theme", "sphinx_design"]},
     classifiers=["License :: OSI Approved :: MIT License"],
 )

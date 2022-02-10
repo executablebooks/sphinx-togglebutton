@@ -81,5 +81,6 @@ See {ref}`usage` for information about how to use `sphinx-togglebutton`.
 :maxdepth: 2
 use
 reference/index
+reference/notebooks
 changelog
 ```

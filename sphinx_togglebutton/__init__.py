@@ -59,7 +59,7 @@ def setup(app):
     # Run the function after the builder is initialized
     app.connect("builder-inited", insert_custom_selection_config)
     app.connect("config-inited", initialize_js_assets)
-    
+
     # Register nodes and directives
     app.add_directive("toggle", Toggle)
     app.add_directive("toggle-all-button", ToggleAllButton)

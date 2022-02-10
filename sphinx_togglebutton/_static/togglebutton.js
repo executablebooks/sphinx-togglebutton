@@ -50,7 +50,7 @@ var initToggleItems = () => {
       // Define the structure of the details block and insert it as a sibling
       var detailsBlock = `
         <details class="toggle-details">
-            <summary>
+            <summary class="toggle-button-style">
               ${toggleChevron}
               <span>${toggleHintShow}</span>
             </summary>
@@ -168,5 +168,17 @@ if (toggleOpenOnPrint == "true") {
         delete el.dataset["toggle_after_print"];
       }
     });
+  });
+}
+
+
+const toggleAllBySelector = (selector) => {
+  document.querySelectorAll(selector).forEach((el) => {
+    if (el.classList.contains("admonition")) {
+      el.querySelector("button.toggle-button").click();
+    } else {
+      // We have a details tag, the parent is the `<details>` block
+      el.parentElement.open = !(el.parentElement.open === true)
+    }
   });
 }

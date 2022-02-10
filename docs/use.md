@@ -171,6 +171,72 @@ button.toggle-button {
 }
 ```
 
+## Toggle all buttons at once
+
+There are two ways that you can toggle all elements on the screen at once.
+Both are covered below.
+
+For reference, we'll show two kinds of toggle-able content so you can see the behavior.
+
+```{toggle}
+**Here's a toggle-able content block!**
+```
+
+```{admonition} And this is a toggleable admonition!
+:class: dropdown
+
+Here's some toggle-able content!
+```
+
+### The `{toggle-all-button}` directive
+
+Using the `{toggle-all-button}` directive will add a button that, when clicked, will toggle all of the content on the page.
+Each item that is closed will be opened, and each item that is open will be closed.
+
+For example:
+
+````
+```{toggle-all-button}
+```
+````
+results in:
+
+```{toggle-all-button}
+```
+
+### Toggle all items that match a selector
+
+If you'd like to restrict your `toggle-all-button` to only toggle a subset of items on your page, use the `:selector:` option.
+This should map on to elements that were selected by the `togglebutton_selector` configuration.
+
+For example, to only toggle admonition blocks, use this selector:
+
+````
+```{toggle-all-button} Toggle admonitions
+:selector: .admonition.dropdown
+```
+````
+
+This results in:
+
+```{toggle-all-button} Toggle admonitions
+:selector: .admonition.dropdown
+```
+
+### Customize the title
+
+You may optionally provide a title as well.
+For example:
+
+````
+```{toggle-all-button} Toggle all the things!
+```
+````
+results in:
+
+```{toggle-all-button} Toggle all the things!
+```
+
 ## Printing behavior with toggle buttons
 
 By default `sphinx-togglebutton` will **open all toggle-able content when you print**.

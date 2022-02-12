@@ -28,24 +28,20 @@ The code below generated the buttons that follow:
 ```{toggle-all-button}
 ```
 
-```{toggle-all-button} Toggle all inputs
-:selector: .cell.tag_hide-input .cell_input
+```{toggle-all-button} cell-inputs
 ```
 
-```{toggle-all-button} Toggle all outputs
-:selector: .cell.tag_hide-output .cell_output
+```{toggle-all-button} cell-outputs
 ```
 ````
 
 ```{toggle-all-button}
 ```
 
-```{toggle-all-button} Toggle all inputs
-:selector: .cell.tag_hide-input .cell_input
+```{toggle-all-button} cell-inputs
 ```
 
-```{toggle-all-button} Toggle all outputs
-:selector: .cell.tag_hide-output .cell_output
+```{toggle-all-button} cell-outputs
 ```
 
 ## Cell inputs

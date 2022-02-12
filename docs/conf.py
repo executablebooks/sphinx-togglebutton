@@ -89,6 +89,14 @@ html_theme_options = {
 myst_enable_extensions = ["colon_fence"]
 
 # To test behavior in JS
+togglebutton_groups = {
+    "cell-inputs": ".cell.tag_hide-input .cell_input",
+"cell-outputs": ".cell.tag_hide-output .cell_output",
+"directive": ".toggle",
+"admonitions": ".admonition.dropdown",
+"group1": ".group-one",
+"group2": ".group-two",
+}
 # togglebutton_hint = "test show"
 # togglebutton_hint_hide = "test hide"
 # togglebutton_open_on_print = False
@@ -97,6 +105,8 @@ myst_enable_extensions = ["colon_fence"]
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ["_static"]
+html_logo = "_static/logo-chevron.svg"
+html_title = "Sphinx Togglebutton"
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -176,3 +186,23 @@ texinfo_documents = [
         "Miscellaneous",
     )
 ]
+
+# -- Create an example directive for the docs ---------------------------------
+from docutils.parsers.rst.directives.admonitions import Admonition
+
+
+class Example(Admonition):
+    def run(self):
+        # Manually add a "tip" class to style it
+        if "class" not in self.options:
+            self.options["class"] = ["tip"]
+        else:
+            self.options["class"].append("tip")
+        # Add `Example` to the title so we don't have to type it
+        self.arguments[0] = f"Example: {self.arguments[0]}"
+        # Now run the Admonition logic so it behaves the same way
+        nodes = super().run()
+        return nodes
+
+def setup(app):
+    app.add_directive("example", Example)

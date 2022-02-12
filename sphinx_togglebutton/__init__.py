@@ -1,10 +1,14 @@
 """A small sphinx extension to add "toggle" buttons to items."""
 import os
+from typing import Dict, AnyStr
 from docutils import nodes
+from sphinx.util import logging
 
-from .directive import Toggle, ToggleAllButton, ToggleAllNode
+from .directive import Toggle, ToggleAllInGroupButton, ToggleAllInGroupNode
 
 __version__ = "0.3.0"
+
+SPHINX_LOGGER = logging.getLogger(__name__)
 
 
 def st_static_path(app):
@@ -23,9 +27,13 @@ def initialize_js_assets(app, config):
 
 # This function reads in a variable and inserts it into JavaScript
 def insert_custom_selection_config(app):
-    # This is a configuration that you've specified for users in `conf.py`
-    selector = app.config["togglebutton_selector"]
-    js_text = "var togglebuttonSelector = '%s';" % selector
+    if isinstance(app.config.togglebutton_selector, str):
+        selectors = {"default_selector": app.config.togglebutton_selector}
+    if app.config.togglebutton_groups:
+        if isinstance(app.config.togglebutton_selector, str):
+            SPHINX_LOGGER.info("toggle-button]: Selector groups over-riding selector string.")
+        selectors = app.config.togglebutton_groups
+    js_text = "var togglebuttonSelectors = %s;" % selectors
     app.add_js_file(None, body=js_text)
 
 
@@ -52,6 +60,7 @@ def setup(app):
     # Add the string we'll use to select items in the JS
     # Tell Sphinx about this configuration variable
     app.add_config_value("togglebutton_selector", ".toggle, .admonition.dropdown", "html")
+    app.add_config_value("togglebutton_groups", {}, "html")
     app.add_config_value("togglebutton_hint", "Click to show", "html")
     app.add_config_value("togglebutton_hint_hide", "Click to hide", "html")
     app.add_config_value("togglebutton_open_on_print", True, "html")
@@ -62,9 +71,9 @@ def setup(app):
 
     # Register nodes and directives
     app.add_directive("toggle", Toggle)
-    app.add_directive("toggle-all-button", ToggleAllButton)
+    app.add_directive("toggle-group", ToggleAllInGroupButton)
     app.add_node(
-        ToggleAllNode,
+        ToggleAllInGroupNode,
         html=(visit_element_html, None),
         latex=(skip, None),
         textinfo=(skip, None),

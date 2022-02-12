@@ -4,7 +4,7 @@ from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
 
 
-class ToggleAllNode(nodes.Element):
+class ToggleAllInGroupNode(nodes.Element):
     """Appended to the doctree by the ToggleAll directive
 
     Renders as a button to enable thebe on the page.
@@ -13,39 +13,45 @@ class ToggleAllNode(nodes.Element):
     is enabled, the node is added at the bottom of the document.
     """
 
-    def __init__(self, rawsource="", *children, selector=None, text="Toggle All", **attributes):
-        super().__init__("", text=text, selector=selector)
+    def __init__(self, rawsource="", *children, group=None, text="Toggle All", **attributes):
+        super().__init__("", text=text, group=group)
 
     def html(self):
         text = self["text"]
-        selector = self["selector"]
+        group = self["group"]
         return (f"""\
               <button title="{text}"
                class="toggle-all-button toggle-button-style"
-               onclick="toggleAllBySelector('{selector}')"
+               onclick="toggleAllByGroup('{group}')"
               >{text}</button>""")
 
 
-class ToggleAllButton(SphinxDirective):
-    """Trigger toggle on all elements that match a selector."""
+class ToggleAllInGroupButton(SphinxDirective):
+    """Trigger toggle on all elements that match a group."""
 
     optional_arguments = 1
     final_argument_whitespace = True
     option_spec = {
-      "selector": directives.unchanged
+      "text": directives.unchanged
     }
     has_content = False
 
     def run(self):
-        kwargs = {
-          "text": "Toggle all buttons",
-          "selector": self.env.config.togglebutton_selector
-        }
+        kwargs = {}
         if self.arguments:
-          kwargs["text"] = self.arguments[0]
-        if self.options.get("selector"):
-            kwargs["selector"] = self.options["selector"]
-        return [ToggleAllNode(**kwargs)]
+            kwargs["group"] = self.arguments[0]
+        else:
+            kwargs["group"] = "**"
+
+        if self.options.get("text"):
+            kwargs["text"] = self.options["text"]
+        else:
+            if kwargs["group"] == "**":
+                msg = "Toggle all content"
+            else:
+                msg = f"Toggle all {kwargs['group']}"
+            kwargs["text"] = msg
+        return [ToggleAllInGroupNode(**kwargs)]
 
 
 class Toggle(SphinxDirective):

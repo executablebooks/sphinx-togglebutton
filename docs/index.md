@@ -21,7 +21,7 @@ Some content
 ````
 :::
 
-See {ref}`dropdown-admonitions` for more information.
+See {ref}`use:admonition-toggles` for more information.
 
 ## Hide any content behind a toggle button
 
@@ -81,5 +81,6 @@ See {ref}`usage` for information about how to use `sphinx-togglebutton`.
 :maxdepth: 2
 use
 reference/index
+reference/notebooks
 changelog
 ```

@@ -1,4 +1,33 @@
 /**
+ * General button styles
+ */
+.toggle-button-style {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+
+    border-radius: .4em;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 0.5em 1em;
+    font-size: .9em;
+    margin-bottom: 1em;
+}
+
+.toggle-button-style:hover {
+    background: #f6f6f6;
+}
+
+.toggle-button-style:active {
+    background: #eee;
+}
+
+.toggle-button-style:focus, .toggle-button-style:focus-visible {
+    outline: none;
+}
+
+
+/**
  * Admonition-based toggles
  */
 
@@ -84,24 +113,9 @@ details.toggle-details {
 }
 
 details.toggle-details summary {
-    display: flex;
-    align-items: center;
-    width: fit-content;
     cursor: pointer;
     list-style: none;
-    border-radius: .4em;
-    border: 1px solid #ccc;
-    background: #f8f8f8;
     padding: 0.4em 1em 0.4em 0.5em; /* Less padding on left because the SVG has left margin */
-    font-size: .9em;
-}
-
-details.toggle-details summary:hover {
-    background: #f6f6f6;
-}
-
-details.toggle-details summary:active {
-    background: #eee;
 }
 
 details.toggle-details[open] summary {

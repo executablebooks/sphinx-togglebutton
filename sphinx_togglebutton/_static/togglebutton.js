@@ -9,83 +9,89 @@ let toggleChevron = `
 </svg>`;
 
 var initToggleItems = () => {
-  var itemsToToggle = document.querySelectorAll(togglebuttonSelector);
-  console.log(`[togglebutton]: Adding toggle buttons to ${itemsToToggle.length} items`)
-  // Add the button to each admonition and hook up a callback to toggle visibility
-  itemsToToggle.forEach((item, index) => {
-    if (item.classList.contains("admonition")) {
-      // If it's an admonition block, then we'll add a button inside
-      // Generate unique IDs for this item
-      var toggleID = `toggle-${index}`;
-      var buttonID = `button-${toggleID}`;
+  for (const [group, selector] of Object.entries(togglebuttonSelectors)) {
+    var itemsToToggle = document.querySelectorAll(selector);
+  
+    console.log(`[togglebutton]: Adding toggle button group: ${group} with ${itemsToToggle.length} items`)
+    // Add the button to each admonition and hook up a callback to toggle visibility
+    itemsToToggle.forEach((item, index) => {
+      // Attach togglebutton data entries
+      item.dataset.togglebuttonGroup = group;
+      item.dataset.togglebutton = "true";
+      if (item.classList.contains("admonition")) {
+        // If it's an admonition block, then we'll add a button inside
+        // Generate unique IDs for this item
+        var toggleID = `toggle-${index}`;
+        var buttonID = `button-${toggleID}`;
 
-      item.setAttribute('id', toggleID);
-      if (!item.classList.contains("toggle")){
-        item.classList.add("toggle");
-      }
-      // This is the button that will be added to each item to trigger the toggle
-      var collapseButton = `
-        <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}", data-toggle-hint="${toggleHintShow}">
-            ${toggleChevron}
-        </button>`;
-
-      item.insertAdjacentHTML("afterbegin", collapseButton);
-      thisButton = document.getElementById(buttonID);
-
-      // Add click handlers for the button + admonition title (if admonition)
-      thisButton.addEventListener('click', toggleClickHandler);
-      admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
-      if (admonitionTitle) {
-        admonitionTitle.addEventListener('click', toggleClickHandler);
-        admonitionTitle.dataset.target = toggleID
-        admonitionTitle.dataset.button = buttonID
-      }
-
-      // Now hide the item for this toggle button unless explicitly noted to show
-      if (!item.classList.contains("toggle-shown")) {
-        toggleHidden(thisButton);
-      }
-    } else {
-      // If not an admonition, wrap the block in a <details> block
-      // Define the structure of the details block and insert it as a sibling
-      var detailsBlock = `
-        <details class="toggle-details">
-            <summary>
+        item.setAttribute('id', toggleID);
+        if (!item.classList.contains("toggle")){
+          item.classList.add("toggle");
+        }
+        // This is the button that will be added to each item to trigger the toggle
+        var collapseButton = `
+          <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}", data-toggle-hint="${toggleHintShow}">
               ${toggleChevron}
-              <span>${toggleHintShow}</span>
-            </summary>
-        </details>`;
-      item.insertAdjacentHTML("beforebegin", detailsBlock);
+          </button>`;
 
-      // Now move the toggle-able content inside of the details block
-      details = item.previousElementSibling
-      details.appendChild(item)
+        item.insertAdjacentHTML("afterbegin", collapseButton);
+        thisButton = document.getElementById(buttonID);
 
-      // Set up a click trigger to change the text as needed
-      details.addEventListener('click', (click) => {
-        let parent = click.target.parentElement;
-        if (parent.tagName.toLowerCase() == "details") {
-          summary = parent.querySelector("summary");
-          details = parent;
-        } else {
-          summary = parent;
-          details = parent.parentElement;
+        // Add click handlers for the button + admonition title (if admonition)
+        thisButton.addEventListener('click', toggleClickHandler);
+        admonitionTitle = document.querySelector(`#${toggleID} > .admonition-title`)
+        if (admonitionTitle) {
+          admonitionTitle.addEventListener('click', toggleClickHandler);
+          admonitionTitle.dataset.target = toggleID
+          admonitionTitle.dataset.button = buttonID
         }
-        // Update the inner text for the proper hint
-        if (details.open) {
-          summary.querySelector("span").innerText = toggleHintShow;
-        } else {
-          summary.querySelector("span").innerText = toggleHintHide;
-        }
-        
-      });
 
-      // If we have a toggle-shown class, open details block should be open
-      if (item.classList.contains("toggle-shown")) {
-        details.click();
+        // Now hide the item for this toggle button unless explicitly noted to show
+        if (!item.classList.contains("toggle-shown")) {
+          toggleHidden(thisButton);
+        }
+      } else {
+        // If not an admonition, wrap the block in a <details> block
+        // Define the structure of the details block and insert it as a sibling
+        var detailsBlock = `
+          <details class="toggle-details">
+              <summary class="toggle-button-style">
+                ${toggleChevron}
+                <span>${toggleHintShow}</span>
+              </summary>
+          </details>`;
+        item.insertAdjacentHTML("beforebegin", detailsBlock);
+
+        // Now move the toggle-able content inside of the details block
+        details = item.previousElementSibling
+        details.appendChild(item)
+
+        // Set up a click trigger to change the text as needed
+        details.addEventListener('click', (click) => {
+          let parent = click.target.parentElement;
+          if (parent.tagName.toLowerCase() == "details") {
+            summary = parent.querySelector("summary");
+            details = parent;
+          } else {
+            summary = parent;
+            details = parent.parentElement;
+          }
+          // Update the inner text for the proper hint
+          if (details.open) {
+            summary.querySelector("span").innerText = toggleHintShow;
+          } else {
+            summary.querySelector("span").innerText = toggleHintHide;
+          }
+          
+        });
+
+        // If we have a toggle-shown class, open details block should be open
+        if (item.classList.contains("toggle-shown")) {
+          details.click();
+        }
       }
-    }
-  })
+    });
+  }
 };
 
 // This should simply add / remove the collapsed class and change the button text
@@ -149,7 +155,6 @@ if (toggleOpenOnPrint == "true") {
   
     // Open the admonitions
     document.querySelectorAll(".admonition.toggle.toggle-hidden").forEach((el) => {
-      console.log(el);
       el.querySelector("button.toggle-button").click();
       el.dataset["toggle_after_print"] = "true";
     });
@@ -168,5 +173,25 @@ if (toggleOpenOnPrint == "true") {
         delete el.dataset["toggle_after_print"];
       }
     });
+  });
+}
+
+
+const toggleAllByGroup = (group) => {
+  // Are we toggling all buttons or just a group?
+  if (group === "**") {
+    var selector = "*[data-togglebutton='true']";
+  } else {
+    var selector = `*[data-togglebutton-group="${group}"]`;
+  }
+
+  // Trigger a toggle for each button that has matched the selector
+  document.querySelectorAll(selector).forEach((el) => {
+    if (el.classList.contains("admonition")) {
+      el.querySelector("button.toggle-button").click();
+    } else {
+      // We have a details tag, the parent is the `<details>` block
+      el.parentElement.open = !(el.parentElement.open === true)
+    }
   });
 }

@@ -67,6 +67,7 @@ button.toggle-button {
 details.toggle-details .tb-icon {
     height: 1.3em;
     width: 1.3em;
+    margin-top: 0.1em;  /* To center the button vertically */
 }
 
 .toggle-button-hidden .tb-icon {

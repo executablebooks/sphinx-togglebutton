@@ -75,7 +75,7 @@ button.toggle-button {
     transform: rotate(-90deg) scaleX(-1);
 }
 
-/* With details toggles, we don't rotate the icon so it point sright */
+/* With details toggles, we don't rotate the icon so it points right */
 details.toggle-details .tb-icon {
     height: 1.4em;
     width: 1.4em;

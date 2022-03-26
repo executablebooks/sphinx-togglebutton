@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1
+
+This is release updates the behavior of the toggle button arrow for admonitions, to point down/up instead of down/right. See [#38](https://github.com/executablebooks/sphinx-togglebutton/issues/38) for details.
+
 ## v0.3.0
 
 ([full changelog](https://github.com/executablebooks/sphinx-togglebutton/compare/v0.2.3...9e73e2e1a673d2485dd8c8d56510cdf910531f1a))

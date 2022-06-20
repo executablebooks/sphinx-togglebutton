@@ -73,9 +73,9 @@ var initToggleItems = () => {
         }
         // Update the inner text for the proper hint
         if (details.open) {
-          summary.querySelector("span[class=toggle-details__summary-text]").innerText = toggleHintShow;
+          summary.querySelector("span.toggle-details__summary-text").innerText = toggleHintShow;
         } else {
-          summary.querySelector("span[class=toggle-details__summary-text]").innerText = toggleHintHide;
+          summary.querySelector("span.toggle-details__summary-text").innerText = toggleHintHide;
         }
         
       });

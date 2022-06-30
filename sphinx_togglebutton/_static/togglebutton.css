@@ -91,8 +91,6 @@ details.toggle-details .tb-icon {
 /* Details blocks */
 details.toggle-details {
     margin: 1em 0;
-    border-radius: .2em;
-    border-left: 3px solid #1976d2;
 }
 
 
@@ -101,6 +99,8 @@ details.toggle-details summary {
     align-items: center;
     cursor: pointer;
     list-style: none;
+    border-radius: .2em;
+    border-left: 3px solid #1976d2;
     padding: 0.2em 0.7em 0.3em 0.5em; /* Less padding on left because the SVG has left margin */
     font-size: 0.8em;
 }
@@ -132,16 +132,6 @@ details.toggle-details[open] summary ~ * {
 @keyframes toggle-fade-in {
   from {opacity: 0%;}
   to {opacity: 100%;}
-}
-
-/* This is the container around the directive's content */
-.toggle-details__container {
-    margin-left: .5rem;
-    padding-bottom: .5rem;
-}
-
-.toggle-details__container *:last-child {
-    margin-bottom: 0;
 }
 
 /* Print rules - we hide all toggle button elements at print */

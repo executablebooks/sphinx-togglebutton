@@ -3,6 +3,10 @@
 This page shows the most common ways that `sphinx-togglebutton` is used as a reference.
 This is a benchmark for styling, and also helps demonstrate the behavior of this extension.
 
+```{toctree}
+notebooks
+```
+
 ## Use amongst text
 
 Here's a paragraph, it's just here to provide some text context for the togglebuttons in this section.

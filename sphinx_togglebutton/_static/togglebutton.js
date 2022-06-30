@@ -60,6 +60,7 @@ var initToggleItems = () => {
       // Now move the toggle-able content inside of the details block
       details = item.previousElementSibling
       details.appendChild(item)
+      item.classList.add("toggle-details__container")
 
       // Set up a click trigger to change the text as needed
       details.addEventListener('click', (click) => {

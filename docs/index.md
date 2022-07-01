@@ -7,7 +7,9 @@ For example:
 
 You can collapse admonitions (notes, warnings, etc) so that their content is hidden until users click the admonition title.
 
-````{example}
+````{example} An example admonition toggle
+:reverse:
+
 :::{admonition} Click the title to toggle
 :class: dropdown
 
@@ -23,7 +25,9 @@ You can also hide arbitrary content behind a toggle button.
 When users press the button, they will see the content.
 For example:
 
-````{example}
+````{example} An example toggle directive
+:reverse:
+
 ```{toggle}
 This is a toggled content block!
 ```

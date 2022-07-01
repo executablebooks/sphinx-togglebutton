@@ -1,7 +1,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Sphinx Toggle Button"
-copyright = "2018, Chris Holdgraf"
+copyright = "2022, Executable Books Community"
 author = "Chris Holdgraf"
 
 # The short X.Y version

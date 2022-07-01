@@ -23,9 +23,18 @@
     box-shadow: inset 0 0 0px 20px rgb(0 0 0 / 3%);
 }
 
+/* Hovering will cause a slight shift in color to make it feel interactive */
+.admonition.toggle .admonition-title:active {
+    box-shadow: inset 0 0 0px 20px rgb(0 0 0 / 6%);
+}
+
 /* Remove extra whitespace below the admonition title when hidden */
 .admonition.toggle-hidden {
     padding-bottom: 0;
+}
+
+.admonition.toggle-hidden .admonition-title {
+    margin-bottom: 0;
 }
 
 /* hides all the content of a page until de-toggled */

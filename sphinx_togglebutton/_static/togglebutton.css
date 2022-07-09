@@ -55,14 +55,12 @@ button.toggle-button {
     border: none;
     outline: none;
 
-    /* Positioning just inside the amonition title */
-    margin-right: 0.5em;
+    /* Positioning just inside the admonition title */
     position: absolute;
-    right: 0em;
-    top: .5em;
-    float: right;
+    right: 0.5em;
     padding: 0px;
-    display: flex;
+    border: none;
+    outline: none;
 }
 
 /* Display the toggle hint on wide screens */

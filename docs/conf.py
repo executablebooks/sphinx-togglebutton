@@ -21,6 +21,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- Options for HTML output -------------------------------------------------
 html_theme = "sphinx_book_theme"
 # html_theme = "sphinx_rtd_theme"  # These are just for testing
+# html_theme = "pydata_sphinx_theme"
 # html_theme = "alabaster"
 # html_theme = "furo"
 

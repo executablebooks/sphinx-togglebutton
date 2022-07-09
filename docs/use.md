@@ -24,20 +24,11 @@ You can hide any content and display a toggle button to show it by using certain
 </details>
 ```
 
-:::{admonition} example
-:class: tip
-This MyST Markdown:
-
-````md
+````{example}
 ```{image} https://media.giphy.com/media/FaKV1cVKlVRxC/giphy.gif
 :class: toggle
 ```
 ````
-results in:
-```{image} https://media.giphy.com/media/FaKV1cVKlVRxC/giphy.gif
-:class: toggle
-```
-:::
 
 ### Configure the CSS selector used to insert toggle buttons
 
@@ -65,20 +56,12 @@ sphinx_togglebutton_selector = ".toggle-this-element, #my-special-id"
 `sphinx-togglebutton` treats admonitions as a special case if they are selected.
 If a Sphinx admonition matches the toggle button selector, then its title will be displayed with a button to reveal its content.
 
-:::{admonition} example
-:class: tip
-````md
+````{example}
 ```{admonition} This will be shown
 :class: dropdown
 And this will be hidden!
 ```
 ````
-results in 
-```{admonition} This will be shown
-:class: dropdown
-And this will be hidden!
-```
-:::
 
 This works for any kind of Sphinx admoniton:
 

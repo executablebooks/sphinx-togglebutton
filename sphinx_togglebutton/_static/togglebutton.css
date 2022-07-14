@@ -80,15 +80,15 @@ button.toggle-button {
     stroke: currentColor;  /* So that we inherit the color of other text */
 }
 
-/* Rotate icon with admonitions so that it points down */
-.admonition.toggle .tb-icon {
-    transform: rotate(-90deg);
+/* The icon should point right when closed, down when open. */
+/* Open */
+.admonition.toggle button .tb-icon {
+    transform: rotate(90deg);
 }
 
-/* When the admonition is hidden, icon should flip upwards but retain rotation */
-/* We scaleX, in order to flip along Y, because it is rotated */
-.admonition.toggle .toggle-button-hidden .tb-icon {
-    transform: rotate(-90deg) scaleX(-1);
+/* Closed */
+.admonition.toggle button.toggle-button-hidden .tb-icon {
+    transform: rotate(0deg);
 }
 
 /* With details toggles, we don't rotate the icon so it points right */

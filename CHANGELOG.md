@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.3.2 - 2022-07-15
+
+([full changelog](https://github.com/executablebooks/sphinx-togglebutton/compare/v0.3.1...347b1ad3a093afad0f0d4c0041249f09f39afab2))
+
+### Enhancements made
+
+- Toggle arrow now points to the right, in order to more closely match the styles of other common documentation themes like Quarto and Material for MkDocs [#49](https://github.com/executablebooks/sphinx-togglebutton/pull/49) ([@choldgraf](https://github.com/choldgraf))
+- Toggle buttons are now more minimal and take up the full width to be easier to click, style is roughly inspired by JupyterLab [#47](https://github.com/executablebooks/sphinx-togglebutton/pull/47) ([@choldgraf](https://github.com/choldgraf))
+
+### Bugfixes
+
+- Fix insertion of toggle hint into nested spans [#45](https://github.com/executablebooks/sphinx-togglebutton/pull/45) ([@janssenhenning](https://github.com/janssenhenning))
+
+### Contributors to this release
+
+[@Apteryks](https://github.com/search?q=repo%3Aexecutablebooks%2Fsphinx-togglebutton+involves%3AApteryks+updated%3A2022-03-26..2022-07-15&type=Issues) | [@choldgraf](https://github.com/search?q=repo%3Aexecutablebooks%2Fsphinx-togglebutton+involves%3Acholdgraf+updated%3A2022-03-26..2022-07-15&type=Issues) | [@janssenhenning](https://github.com/search?q=repo%3Aexecutablebooks%2Fsphinx-togglebutton+involves%3Ajanssenhenning+updated%3A2022-03-26..2022-07-15&type=Issues) | [@tfiers](https://github.com/search?q=repo%3Aexecutablebooks%2Fsphinx-togglebutton+involves%3Atfiers+updated%3A2022-03-26..2022-07-15&type=Issues) | 
+
 ## v0.3.1
 
 This is release updates the behavior of the toggle button arrow for admonitions, to point down/up instead of down/right. See [#38](https://github.com/executablebooks/sphinx-togglebutton/issues/38) for details.

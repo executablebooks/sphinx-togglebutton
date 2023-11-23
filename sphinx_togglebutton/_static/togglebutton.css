@@ -43,6 +43,7 @@
     margin: 0;
     opacity: 0;
     visibility: hidden;
+    display: block;
 }
 
 /* General button style and position*/

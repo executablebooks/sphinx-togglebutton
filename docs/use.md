@@ -75,6 +75,8 @@ A note!
 A warning!
 :::
 
+If you add the class `toggle-shown`, it will be un-toggled by default but collapsable (`:class: dropdown, toggle-shown`).
+
 
 (toggle-directive)=
 ## Use the `{toggle}` directive to toggle blocks of content

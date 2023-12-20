@@ -66,7 +66,7 @@ button.toggle-button {
 
 /* Display the toggle hint on wide screens */
 @media (min-width: 768px) {
-    button.toggle-button.toggle-button-hidden:before {
+    button.toggle-button:before {
         content: attr(data-toggle-hint);  /* This will be filled in by JS */
         font-size: .8em;
         align-self: center;

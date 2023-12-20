@@ -100,9 +100,11 @@ var toggleHidden = (button) => {
   if (itemToToggle.classList.contains("toggle-hidden")) {
     itemToToggle.classList.remove("toggle-hidden");
     button.classList.remove("toggle-button-hidden");
+    button.dataset.toggleHint = toggleHintHide;
   } else {
     itemToToggle.classList.add("toggle-hidden");
     button.classList.add("toggle-button-hidden");
+    button.dataset.toggleHint = toggleHintShow;
   }
 }
 

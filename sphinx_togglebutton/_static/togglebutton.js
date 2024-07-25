@@ -25,7 +25,15 @@ var initToggleItems = () => {
       }
       // This is the button that will be added to each item to trigger the toggle
       var collapseButton = `
-        <button type="button" id="${buttonID}" class="toggle-button" data-target="${toggleID}" data-button="${buttonID}" data-toggle-hint="${toggleHintShow}" aria-label="Toggle hidden content">
+        <button type="button"
+                id="${buttonID}"
+                class="toggle-button"
+                data-target="${toggleID}"
+                data-button="${buttonID}"
+                data-toggle-hint="${toggleHintShow}"
+                aria-label="Toggle hidden content"
+                aria-expanded="false"
+            >
             ${toggleChevron}
         </button>`;
 
@@ -101,10 +109,12 @@ var toggleHidden = (button) => {
     itemToToggle.classList.remove("toggle-hidden");
     button.classList.remove("toggle-button-hidden");
     button.dataset.toggleHint = toggleHintHide;
+    button.setAttribute("aria-expanded", true);
   } else {
     itemToToggle.classList.add("toggle-hidden");
     button.classList.add("toggle-button-hidden");
     button.dataset.toggleHint = toggleHintShow;
+    button.setAttribute("aria-expanded", false);
   }
 }
 

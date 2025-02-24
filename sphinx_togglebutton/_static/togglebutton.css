@@ -159,3 +159,8 @@ details.toggle-details[open] summary ~ * {
         display: none;
     }
 }
+
+/* Dropdown under a code cell in dark mode */
+[data-theme="dark"] details.hide.below-input summary span {
+  color: black !important;
+}

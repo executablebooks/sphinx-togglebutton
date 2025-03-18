@@ -2,6 +2,8 @@
 import os
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
+from sphinx.config import Config
+from sphinx.application import Sphinx
 
 __version__ = "0.3.2"
 
@@ -9,9 +11,20 @@ __version__ = "0.3.2"
 def st_static_path(app):
     static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "_static"))
     app.config.html_static_path.append(static_path)
+    
+def define_texts(app: Sphinx, config: Config) -> None:
+    if config.language is not None and config.language_map is not None:
+        lg = config.language_map[config.language]
+        if "togglebutton_hint" in lg:
+            config.togglebutton_hint = lg["togglebutton_hint"]
+        if "togglebutton_hint_hide" in lg:
+            config.togglebutton_hint_hide = lg["togglebutton_hint_hide"]
+        if "togglebutton_open_on_print" in lg:
+            config.togglebutton_open_on_print = lg["togglebutton_open_on_print"]
 
 
 def initialize_js_assets(app, config):
+    define_texts(app, config)
     # Update the global context
     app.add_js_file(None, body=f"let toggleHintShow = '{config.togglebutton_hint}';")
     app.add_js_file(None, body=f"let toggleHintHide = '{config.togglebutton_hint_hide}';")
@@ -59,6 +72,8 @@ def setup(app):
     # Add the string we'll use to select items in the JS
     # Tell Sphinx about this configuration variable
     app.add_config_value("togglebutton_selector", ".toggle, .admonition.dropdown", "html")
+    if not hasattr(app.config, "language_map"):
+        app.add_config_value("language_map", None, "env") # A map of translated strings
     app.add_config_value("togglebutton_hint", "Click to show", "html")
     app.add_config_value("togglebutton_hint_hide", "Click to hide", "html")
     app.add_config_value("togglebutton_open_on_print", True, "html")

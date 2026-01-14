@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.4 - 2026-01-14
+
+### Fixed
+
+- Upgrade used version in release workflow to the latest available.
+- Correct build command in `tests.yml`.
+
 ## 0.4.3 - 2026-01-14
 
 ### Fixed

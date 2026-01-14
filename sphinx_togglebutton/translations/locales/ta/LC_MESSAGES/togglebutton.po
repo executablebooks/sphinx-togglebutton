@@ -1,0 +1,15 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Sphinx-ToggleButton\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ta\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Click to hide"
+msgstr "மறைக்க கிளிக் செய்யவும்"
+
+msgid "Click to show"
+msgstr "காட்ட கிளிக் செய்யவும்"

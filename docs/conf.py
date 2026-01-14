@@ -11,7 +11,12 @@ release = ""
 
 
 # -- General configuration ---------------------------------------------------
-extensions = ["myst_nb", "sphinx_examples", "sphinx_design", "sphinx_togglebutton"]
+extensions = [
+    "myst_nb",
+    "sphinx_examples",
+    "sphinx_design",
+    "sphinx_togglebutton",
+]
 templates_path = ["_templates"]
 source_suffix = ".rst"
 main_doc = "index"

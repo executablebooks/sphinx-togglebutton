@@ -1,1 +1,9 @@
 graft doc/
+
+recursive-include sphinx_togglebutton *.js
+recursive-include sphinx_togglebutton *.css
+
+recursive-include sphinx_togglebutton *.json
+recursive-include sphinx_togglebutton *.mo
+recursive-include sphinx_togglebutton *.po
+recursive-include sphinx_togglebutton *.py

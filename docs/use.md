@@ -129,7 +129,16 @@ Here is my toggle-able content!
 ## Change the button hint text
 
 You can control the "hint" text that is displayed next to togglebuttons.
-To do so, use the following configuration variable in your `conf.py` file:
+
+To use the default values for your language, set the language in your Sphinx configuration:
+
+```python
+language = "nl"  # or "de", "es", etc.
+```
+
+Supported languages are English (default), Chinese (Simplified), Chinese (Traditional), Hindi, Spanish, French, Arabic, Bengali, Russian, Portuguese, Indonesian, Japanese, German, Korean, Turkish, Vietnamese, Tamil, Italian, Thai, Dutch, Greek, Polish, Ukrainian, Persian, Malay, Swahili, Romanian, Czech, Hungarian, Hebrew, Swedish, and Norwegian.
+
+If you prefer to have custom hint texts instead of the defaults for your language, use the following configuration variable in your `conf.py` file:
 
 ```python
 togglebutton_hint = "Displayed when the toggle is closed."

@@ -69,3 +69,10 @@ here's a container with an image inside:
 
         .. image:: https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif
 ```
+
+Internationalization (i18n)
+============
+
+The texts `Click to hide` and `Click to show` used in the toggle buttons are internationalized by using the set language from Sphinx's configuration.
+
+Supported languages are English (default), Chinese (Simplified), Chinese (Traditional), Hindi, Spanish, French, Arabic, Bengali, Russian, Portuguese, Indonesian, Japanese, German, Korean, Turkish, Vietnamese, Tamil, Italian, Thai, Dutch, Greek, Polish, Ukrainian, Persian, Malay, Swahili, Romanian, Czech, Hungarian, Hebrew, Swedish, and Norwegian.

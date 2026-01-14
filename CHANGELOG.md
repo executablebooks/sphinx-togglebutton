@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 - 2026-01-14
+
+### Fixed
+
+- Updated the release workflow to use a recent Python version.
+
 ## 0.4.0 - 2026-01-14
 
 ### Added

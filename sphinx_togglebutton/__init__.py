@@ -9,7 +9,7 @@ from sphinx.locale import get_translation
 MESSAGE_CATALOG_NAME = "togglebutton"
 translate = get_translation(MESSAGE_CATALOG_NAME)
 
-__version__ = "0.3.2"
+__version__ = "0.4.0"
 
 
 def st_static_path(app):

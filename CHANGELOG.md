@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2 - 2026-01-14
+
+### Fixed
+
+- Enhanced `setup.cfg` with complete metadata.
+- Simplified `setup.py` to just call `setup()`.
+
 ## 0.4.1 - 2026-01-14
 
 ### Fixed

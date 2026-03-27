@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.5 - 2026-03-27
+
+### Fixed
+
+- Fix selector for admonition title in togglebutton.js.
+
 ## 0.4.4 - 2026-01-14
 
 ### Fixed
